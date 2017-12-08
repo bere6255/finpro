@@ -1,0 +1,13 @@
+@extends('layouts.app1')
+@section('navber')
+  @include('inc.nav')
+@endsection
+@section('loginmodel')
+  @include('inc.log_reg')
+@endsection
+@section('slogan')
+  @include('inc.slogan_in')
+@endsection
+@section('content')
+  @include('inc.cat')
+@endsection

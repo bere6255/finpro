@@ -1,0 +1,10 @@
+@extends('layouts.app_logdas')
+@section('navber')
+  @include('inc_in.das_nav')
+@endsection
+@section('sideber')
+  @include('inc_in.das_sidber')
+@endsection
+@section('content')
+  @include('inc_in.das_content')
+@endsection
