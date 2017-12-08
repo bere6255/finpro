@@ -28,6 +28,7 @@
               <!--slogan start-->
               @yield('slogan')
               <!--slogan end-->
+              @yield('carouthom')
               <!--catigory start-->
               @yield('content')
               <!--catigory end-->
@@ -37,13 +38,7 @@
             </div>
 
             <!-- footer start-->
-            <footer class="home_footr">
-                <div class="container-fluid clearfix">
-                  <span class="float-right">
-                      <a href="#">Fist Services</a> &copy; 2017
-                  </span>
-                </div>
-            </footer>
+              @yield('footer')
 
         </div>
 

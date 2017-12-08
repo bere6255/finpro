@@ -12,10 +12,10 @@ class RegisterController extends Controller
 
     public function create(Request $request){
       // validate the forms
-     $this->veridata($request);
+     $this->velidata($request);
     }
 
-    private function veridata( $request){
+    private function velidata( $request){
       $this->Validate($request, [
          'reg_usrname'=> 'required',
          'email'=> 'required|unique:users',
