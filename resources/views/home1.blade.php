@@ -21,3 +21,6 @@
 <?php else: echo "just checking thingss out"; ?>
 
 <?php endif; ?>
+@section('footer')
+  @include('inc.footer')
+@endsection

@@ -14,7 +14,7 @@ Route::get('/login', 'SessionsController@Create');
 Route::post('/login', 'SessionsController@Login');
 Route::post('/register', 'RegisterController@Create');
 Route::get('/register', 'RegisterController@load');
-Route::post('/admin/catigory', 'cat@create_cat');
+Route::post('/admin/catigory', 'cat_control@create_cat');
 
 Route::get('/', function () {
     return view('home1');

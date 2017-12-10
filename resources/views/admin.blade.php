@@ -1,16 +1,16 @@
 @extends('layouts.app1')
 @section('navber')
-  @include('inc.nav')
+  @include('inc_in.das_nav')
 @endsection
 @section('loginmodel')
   @include('inc.log_reg')
 @endsection
-@section('slogan')
-  @include('inc.slogan')
+@section('sideber')
+  @include('inc_in.das_sidber')
 @endsection
 @section('content')
-  @include('inc.home_cat')
+  @include('admin.post_cat')
 @endsection
 @section('footer')
-  @include('inc_in.das.footer')
+  @include('inc_in.das_footer')
 @endsection
