@@ -36,6 +36,26 @@ return [
     */
 
     'guards' => [
+        'baod' => [
+            'driver' => 'session',
+            'provider' => 'baods',
+        ],
+
+        'gen' => [
+            'driver' => 'session',
+            'provider' => 'gens',
+        ],
+
+        'salea' => [
+            'driver' => 'session',
+            'provider' => 'saleas',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -65,6 +85,26 @@ return [
     */
 
     'providers' => [
+        'baods' => [
+            'driver' => 'eloquent',
+            'model' => App\Baod::class,
+        ],
+
+        'gens' => [
+            'driver' => 'eloquent',
+            'model' => App\Gen::class,
+        ],
+
+        'saleas' => [
+            'driver' => 'eloquent',
+            'model' => App\Salea::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -92,6 +132,30 @@ return [
     */
 
     'passwords' => [
+        'baods' => [
+            'provider' => 'baods',
+            'table' => 'baod_password_resets',
+            'expire' => 60,
+        ],
+
+        'gens' => [
+            'provider' => 'gens',
+            'table' => 'gen_password_resets',
+            'expire' => 60,
+        ],
+
+        'saleas' => [
+            'provider' => 'saleas',
+            'table' => 'salea_password_resets',
+            'expire' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'admin_password_resets',
+            'expire' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
