@@ -10,7 +10,9 @@ class homepage extends Controller
       $cart = cat::all();
       return view('home1', ['cart'=> $cart]);
     }
-    private function testing(){
+    
+
+    public function subcat(){
 
     }
 }

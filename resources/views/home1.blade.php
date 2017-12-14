@@ -16,7 +16,7 @@
 @endsection
 <?php $name =1; if ($name==1): ?>
   @section('product')
-    @include('inc.product_samp')
+    @include('inc.cat')
   @endsection
 <?php else: echo "just checking thingss out"; ?>
 

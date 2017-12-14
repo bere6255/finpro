@@ -17,10 +17,11 @@ Route::get('/register', 'RegisterController@load');
 Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
 Route::get('/', 'homepage@home');
+Route::get('/subcat', 'homepage@subcat');
+Route::get('/catigory', 'cat_control@catigory');
 
-Route::get('/catigory', function () {
-    return view('catigory');
-});
+
+
 Route::get('/admin', function () {
     return view('admin');
 });

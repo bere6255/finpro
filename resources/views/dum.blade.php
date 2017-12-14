@@ -12,6 +12,20 @@ class LoginController extends Controller
     |
     */
 
+    pruduct tables
+    product id
+    product name
+    product describtion
+    product amount
+    product rating
+    product image
+    poster id
+    addition
+    product catigory
+    product sub_cat
+    timestamps
+
+
     private function load($loaded){
       $forminput=$loaded->except('image');
       //handil image upload
