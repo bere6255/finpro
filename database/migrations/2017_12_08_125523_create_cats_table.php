@@ -16,8 +16,8 @@ class CreateCatsTable extends Migration
         Schema::create('cats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Cart');
+            $table->string('image_url');
             $table->string('uploader_ID');
-            $table->string('imagename');
             $table->timestamps();
         });
     }

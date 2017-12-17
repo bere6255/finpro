@@ -3,41 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\cat;
 class cat_control extends Controller
 {
-    public function create_cat(Request $request){
-      $forminput=$loaded->except('image');
+    public function create_cat(request $request){
+      $name="cat_".md5("bereobong" . microtime()).".jpg";
+      $catigory = $request->input('main_cat');
+      $forminput=$request->except('img');
+      if ($request->hasFile('img')) {
+        $request->file('img');
+        $request->img->storeAs('public',$name);
 
-      $this->Validate($request, [
-        'main_cat'=> 'required'
-      ]);
-
-      $this->Validate($forminput, [
-        'image'=> 'image|mimes:png,jpg,jpng|max:10000'
-      ]);
-      //handil image upload
-      $image=$request->image;
-      if($image){
-        $imagename=$image->getClientoriginalName();
-        $image->move('images',$imagename);
-        //pass image name to forminput
-        $forminput['image']=$imagename;
       }
-      $cats = cat::create($forminput->all());
 
-/*
-      $cat = new cat();
-      $cat->Cart = $request->input('main_cat');
-      $cat->save();
-*/
+      $cats= new cat;
+      $cats->Cart = $catigory;
+      $cats->image_url=$name;
+      $cats->save();
+
       return back()->with('info','catigory added socessfully');
+
     }
 
 
     public function catigory(){
       $cart = cat::all();
-      return view('catigory', ['cart'=> $cart]);
+      return view('catigory', ['cart'=> $cart],);
     }
+
 
 }

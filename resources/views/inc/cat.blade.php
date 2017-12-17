@@ -6,7 +6,7 @@
                   <div class="card">
                       <div class="card-block">
                           <div class="clearfix">
-                            <a href="/subcat?{{$cart->Cart}}"><img name="{{$cart->Cart}}" src="images/product1.jpg" alt="" style="width:100%; height:25%;  "></a>
+                            <a href="/subcat?{{$cart->Cart}}"><img name="{{$cart->Cart}}" src="{{Storage::url($cart->image_url)}}" alt="" style="width:100%; height:25%;  "></a>
                           </div>
                           <div class=" card clearfix">
                           <a href="/subcat?{{$cart->Cart}}">  <h4 class="font-weight-bold txt-brand-color">{{$cart->Cart}}</h4></a>

@@ -11,7 +11,7 @@
                       <strong>{{ session('info') }}</strong>
                   </span>
               @endif
-                <form name="reg_form" role="form" method="post" action="/admin/catigory">
+                <form name="reg_form" role="form" method="post" action="/admin/catigory" enctype="multipart/form-data">
                   {{ csrf_field()}}
 
                   <div class="form-group {{ $errors->has('main_cat') ? ' has-error' : '' }} ">
@@ -23,6 +23,20 @@
                       @if ($errors->has('main_cat'))
                           <span class="btn table-danger">
                               <strong>{{ $errors->first('main_cat') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                  </div>
+
+                  <div class="form-group {{ $errors->has('img') ? ' has-error' : '' }} ">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-file-photo-o (alias)"></i></span>
+                      <input type="file" id="img" name="img" class="form-control p_input" required="true"/>
+                    </div>
+                    <div class="input-group">
+                      @if ($errors->has('img'))
+                          <span class="btn table-danger">
+                              <strong>{{ $errors->first('img') }}</strong>
                           </span>
                       @endif
                     </div>

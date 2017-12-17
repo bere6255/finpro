@@ -41,16 +41,6 @@ return [
             'provider' => 'baods',
         ],
 
-        'gen' => [
-            'driver' => 'session',
-            'provider' => 'gens',
-        ],
-
-        'salea' => [
-            'driver' => 'session',
-            'provider' => 'saleas',
-        ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -90,16 +80,6 @@ return [
             'model' => App\Baod::class,
         ],
 
-        'gens' => [
-            'driver' => 'eloquent',
-            'model' => App\Gen::class,
-        ],
-
-        'saleas' => [
-            'driver' => 'eloquent',
-            'model' => App\Salea::class,
-        ],
-
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
@@ -135,18 +115,6 @@ return [
         'baods' => [
             'provider' => 'baods',
             'table' => 'baod_password_resets',
-            'expire' => 60,
-        ],
-
-        'gens' => [
-            'provider' => 'gens',
-            'table' => 'gen_password_resets',
-            'expire' => 60,
-        ],
-
-        'saleas' => [
-            'provider' => 'saleas',
-            'table' => 'salea_password_resets',
             'expire' => 60,
         ],
 
