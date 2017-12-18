@@ -10,10 +10,9 @@ class cat_control extends Controller
     public function create_cat(request $request){
       $name="cat_".md5("bereobong" . microtime()).".jpg";
       $catigory = $request->input('main_cat');
-      $forminput=$request->except('img');
       if ($request->hasFile('img')) {
         $request->file('img');
-        $request->img->storeAs('public',$name);
+        $request->img->storeAs('public/main_image/cat',$name);
 
       }
 
@@ -25,12 +24,13 @@ class cat_control extends Controller
       return back()->with('info','catigory added socessfully');
 
     }
-
-
+//Storage::url($cart->image_url)
+//$file = $event->attachments->where('path', $attachmentPath)->first();
     public function catigory(){
       $cart = cat::all();
-      return view('catigory', ['cart'=> $cart],);
+      return view('catigory', ['cart'=> $cart]);
     }
+
 
 
 }

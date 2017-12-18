@@ -21,6 +21,8 @@ Route::get('/subcat', 'homepage@subcat');
 Route::get('/catigory', 'cat_control@catigory');
 
 
+Route::get('storage/public/main_image/cat/{image}', ['as' => 'cat_img', 'uses' => 'cat_control@show']);
+
 
 Route::get('/admin', function () {
     return view('admin');
