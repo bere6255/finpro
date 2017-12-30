@@ -9,5 +9,5 @@
   @include('inc.slogan_in')
 @endsection
 @section('content')
-  @include('inc.cat')
+  @include('inc.sub_cat')
 @endsection

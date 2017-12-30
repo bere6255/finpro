@@ -27,6 +27,7 @@ class RegisterController extends Controller
        $user->fullname = $request->input('reg_usrname');
        $user->email = $request->input('email');
        $user->password =  bcrypt($request->input('passwordreg'));
+       $user->status = "bayer";
        $user->save();
          // autor sign
          auth()->login($user);

@@ -17,12 +17,12 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('pro_name');
             $table->string('description');
-            $table->string('amount');
-            $table->string('rating');
+            $table->integer('amount');
+            $table->integer('rating');
             $table->string('image');
-            $table->string('user_id');
-            $table->string('cat');
-            $table->string('sub_cat');
+            $table->integer('user_id');
+            $table->integer('cat');
+            $table->integer('sub_cat');
             $table->string('add1');
             $table->string('add2');
             $table->string('add3');

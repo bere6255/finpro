@@ -34,6 +34,7 @@
                                           </div>
 
                                           <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                                          <p>Forgot <a href="#">Password?</a></p> <p class="form-group">click here to <a href="/register">register</a></p>
                                       </form>
                                   </div>
 

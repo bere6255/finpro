@@ -25,6 +25,10 @@ class LoginController extends Controller
     product sub_cat
     timestamps
 
+    $userifo =User::find(Auth::id())->with('personalinfo')->first();
+    return $userifo
+
+
 
     private function load($loaded){
       $forminput=$loaded->except('image');

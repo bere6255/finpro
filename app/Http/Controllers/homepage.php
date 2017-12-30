@@ -12,8 +12,4 @@ class homepage extends Controller
     }
 
 
-    public function subcat(){
-      $subcart = sub_cat::all();
-      return view('sub_catigory', ['sub_cart'=> $subcart]);
-    }
 }

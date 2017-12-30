@@ -11,22 +11,21 @@
 |
 */
 Route::get('/login', 'SessionsController@Create');
+Route::get('/logout', 'SessionsController@logout');
 Route::post('/login', 'SessionsController@Login');
 Route::post('/register', 'RegisterController@Create');
 Route::get('/register', 'RegisterController@load');
 Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
+Route::post('/admin/subcatigory', 'cat_control@create_subcat');
 Route::get('/', 'homepage@home');
-Route::get('/subcat', 'homepage@subcat');
+Route::get('/subcat', 'cat_control@subcat');
 Route::get('/catigory', 'cat_control@catigory');
+Route::get('/admin', 'admin@adminloging');
+
+//Route::get('storage/public/main_image/cat/{image}', ['as' => 'cat_img', 'uses' => 'cat_control@show']);
 
 
-Route::get('storage/public/main_image/cat/{image}', ['as' => 'cat_img', 'uses' => 'cat_control@show']);
-
-
-Route::get('/admin', function () {
-    return view('admin');
-});
 Route::get('/bayers', function () {
     return view('bayers');
 });

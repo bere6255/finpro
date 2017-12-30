@@ -1,9 +1,12 @@
 <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
 <div class="user-info">
-    <img src="images/face.jpg" alt="">
-    <p class="name">Richard V.Welsh</p>
-    <p class="designation">Manager</p>
-    <span class="online"></span>
+    @if(Auth::user())
+      <img src="images/face.jpg" alt="">
+      <p class="name">{{Auth::user()->fullname}}</p>
+      <p class="designation">Manager</p>
+      <span class="online"></span>
+
+    @endif
 </div>
     <ul class="nav">
         <li class="nav-item active">
@@ -103,6 +106,9 @@
                 <img src="images/icons/10.png" alt="">
                 <span class="menu-title">Settings</span>
             </a>
+            @if(Auth::user())
+              <a class="nav-link" href="logout"><span class="menu-title">logout</span></a>
+            @endif
         </li>
     </ul>
 </nav>

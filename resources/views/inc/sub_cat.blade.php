@@ -1,106 +1,19 @@
-<div class="row">
+<div class="row mb-2">
 
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product1.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product2.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product3.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product2.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product1.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product3.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product1.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-        <div class="card">
-            <div class="card-block">
-                <div class="clearfix">
-                  <a href="/sellers"><img src="images/product3.jpg" alt="" style="width:100%; height:25%;  "></a>
-                </div>
-                <div class=" card clearfix">
-                  <h4 class="font-weight-bold txt-brand-color">product name</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
+          @if(count($sub_cat)>0)
+              @foreach($sub_cat as $sub_cat)
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+                  <div class="card">
+                      <div class="card-block">
+                          <div class="clearfix">
+                            <a href="/subcat?{{$sub_cat->sub_cat}}"><img name="{{$sub_cat->sub_cat}}" src="{{Storage::url($sub_cat->image_url)}}" alt="" style="width:100%; height:25%;  "></a>
+                          </div>
+                          <div class=" card clearfix">
+                          <a href="/subcat?{{$sub_cat->sub_cat}}">  <h4 class="font-weight-bold txt-brand-color">{{$sub_cat->sub_cat}}</h4></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              @endforeach
+          @endif
+</div>
