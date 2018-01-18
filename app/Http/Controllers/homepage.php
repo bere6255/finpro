@@ -8,8 +8,7 @@ class homepage extends Controller
 {
     public function home(){
       $cart = cat::all();
-      return view('home1', ['cart'=> $cart]);
+      return view('home', ['cart'=> $cart]);
     }
-
 
 }

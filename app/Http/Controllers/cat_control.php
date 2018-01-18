@@ -59,11 +59,16 @@ class cat_control extends Controller
     }
 
     public function subcat(Request $request){
-      $catigory = $request->get();
-    //  $catigory = $request->input('cat');
-      $subcart = DB::select("select * from subcats where cat ='$catigory'");
-    // $subcart = subcat::all();
-    //  $outpot = $subcart->where('cat', $request)->all();
+      // will change from get to post in cat and products
+      //$catigory = $request->input('subcat');;
+      //echo $catigory;
+      //exit();
+      $catigory = $request->get('cat');
+      //$subcart = collect(DB::table('subcats')->where('cat',$catigory));
+      //$subcart = subcat::all();
+      //$outpot = subcat::where('cat', $request)->all();
+      $subcart = DB::table('subcats')->where('cat', '=', $catigory)->get();
+      //$subcart = subcat::where('cat', $request);
       return view('sub_catigory', ['sub_cat'=> $subcart]);
     }
 

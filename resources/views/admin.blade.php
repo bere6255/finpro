@@ -11,6 +11,3 @@
 @section('content')
   @include('admin.post_cat')
 @endsection
-@section('footer')
-  @include('inc_in.das_footer')
-@endsection

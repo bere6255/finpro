@@ -8,6 +8,6 @@ class setup extends Controller
 {
     public function testing(){
       $cart = cat::all();
-      return view('home1', ['cart'=> $cart]);
+      return view('home', ['cart'=> $cart]);
     }
 }

@@ -1,23 +1,26 @@
-@extends('layouts.app')
-
+@extends('layouts.app1')
+@section('navber')
+  @include('inc.nav')
+@endsection
+@section('loginmodel')
+  @include('inc.log_reg')
+@endsection
+@section('slogan')
+  @include('inc.slogan')
+@endsection
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+  @include('inc.home_cat')
+@endsection
+@section('divider')
+  @include('inc.homediv')
+@endsection
+<?php $name =1; if ($name==1): ?>
+  @section('product')
+    @include('inc.cat')
+  @endsection
+<?php else: echo "just checking thingss out"; ?>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<?php endif; ?>
+@section('footer')
+  @include('inc.footer')
 @endsection

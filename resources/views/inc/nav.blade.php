@@ -2,7 +2,7 @@
   <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
       <div class="bg-white text-center navbar-brand-wrapper">
           <a class="navbar-brand brand-logo" href="/">Fist-Service</a>
-          <a class="navbar-brand brand-logo-mini" href="#">Fist</a>
+          <a class="navbar-brand brand-logo-mini" href="/">Fist</a>
 
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -12,7 +12,19 @@
           </form>
           <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
               <li class="nav-item">
+                @if(!Auth::user())
                   <button type="button" class="btn btn-primary" id="mylogin">Sign in / Register </button>
+                @endif
+                @if(Auth::user())
+                  <li class="nav-item">
+                  <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
+                  </li>
+                  <li class="nav-item">
+                  <a href="/logout" class="btn btn-danger" id="logout">Logout</a>
+                  </li>
+                @endif
+
+
           </ul>
 
       </div>

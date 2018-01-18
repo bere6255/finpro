@@ -12,6 +12,14 @@ class LoginController extends Controller
     |
     */
 
+    $array_images = collect(DB::table('photo')
+        ->whereIn('photo_symbol_id', $array_symbols_id)
+        ->where('photo_moderation_id','2')
+        ->orderByRaw('RAND()')
+        ->get(['photo_id', 'photo_src', 'photo_symbol_id']));
+
+
+        DB::select("select * from  where cat ='$catigory'")
     pruduct tables
     product id
     product name

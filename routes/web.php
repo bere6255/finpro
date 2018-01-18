@@ -18,7 +18,7 @@ Route::get('/register', 'RegisterController@load');
 Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
 Route::post('/admin/subcatigory', 'cat_control@create_subcat');
-Route::get('/', 'homepage@home');
+Route::get('/', 'homepage@home')->name('home');
 Route::get('/subcat', 'cat_control@subcat');
 Route::get('/catigory', 'cat_control@catigory');
 Route::get('/admin', 'admin@adminloging');
@@ -31,7 +31,7 @@ Route::get('/bayers', function () {
 });
 Route::get('/board', function () {
     return view('board');
-})->name('home');
+});
 Route::get('/sellers', function () {
     return view('sellers');
 });

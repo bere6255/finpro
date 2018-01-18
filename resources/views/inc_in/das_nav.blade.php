@@ -11,12 +11,17 @@
             <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
         </form>
         <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
+          @if(!Auth::user())
+            <button type="button" class="btn btn-primary" id="mylogin">Sign in / Register </button>
+          @endif
+          @if(Auth::user())
             <li class="nav-item">
-                <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
+            <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-th"></i></a>
+            <a href="/logout" class="btn btn-danger" id="logout">Logout</a>
             </li>
+          @endif
         </ul>
         <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
           <span class="navbar-toggler-icon"></span>
