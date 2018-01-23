@@ -1,16 +1,47 @@
 <?php
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+
+
+	 public function docs(){
+
+    // any custom logic
+
+   //check if user is logged in or user have permission to download this file etc
+
+
+        $headers = [
+          'Content-Type' => 'image/png',
+       ];
+
+    return response()->download(storage_path('app/users/documents/4YPa0bl0L01ey2jO2CTVzlfuBcrNyHE2TV8xakPk.png'), 'filename.png', $headers);
+ }
+when you will hit localhost:8000/docs file will be downloaded if there exists any
+
+file must be in root/storage/app/users/documents directory according to above code
+
+
+
+    Route::get('storage/{filename}', function ($filename)
+{
+    $path = storage_path('public/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+You can now access your files just as you would if you had a symlink:
+
+http://somedomain.com/storage/image.jpg
+
 
     $array_images = collect(DB::table('photo')
         ->whereIn('photo_symbol_id', $array_symbols_id)
@@ -54,39 +85,9 @@ class LoginController extends Controller
     }
 
 
-
-    <?php $name =1; if ($name==1): ?>
-      @section('product')
-        @include('inc.product_samp')
-      @endsection
-    <?php else: echo "just checking thingss out"; ?>
-
-    <?php endif; ?>
-
-
-
-
-
-
-
-
-
-
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -96,12 +97,6 @@ class LoginController extends Controller
       return array_merge($request->only($this->username(), 'password'), ['active' => 1]);
     }
 
-    /**
-     * Get the failed login response instance.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     protected function sendFailedLoginResponse(Request $request)
     {
         $errors = [$this->username() => trans('auth.failed')];

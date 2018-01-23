@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,12 +18,12 @@ Route::get('/register', 'RegisterController@load');
 Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
 Route::post('/admin/subcatigory', 'cat_control@create_subcat');
+Route::post('/admin/product', 'cat_control@create_product');
 Route::get('/', 'homepage@home')->name('home');
 Route::get('/subcat', 'cat_control@subcat');
 Route::get('/catigory', 'cat_control@catigory');
 Route::get('/admin', 'admin@adminloging');
-
-//Route::get('storage/public/main_image/cat/{image}', ['as' => 'cat_img', 'uses' => 'cat_control@show']);
+Route::get('/main', 'main@loadcontent');
 
 
 Route::get('/bayers', function () {
