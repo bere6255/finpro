@@ -22,6 +22,6 @@ class SessionsController extends Controller
 
   public function logout(){
     Auth::logout();
-    return view('home');
+    return back();
   }
 }

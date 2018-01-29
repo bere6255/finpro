@@ -1,3 +1,23 @@
+function ajax_call(){
+  var xmlhttp = new XMLHttpRequest ();
+  var cat=document.getElementById('procat').value;
+    xmlhttp.onreadystatechange = function (){
+        if(xmlhttp.readyState == 4 && xmlhttp.status ==200){
+           document.getElementById('retriv').innerHTML = xmlhttp.responseText;
+
+        }
+    }
+    xmlhttp.open('GET', '/postsubcat?catigory='+cat, true);
+    xmlhttp.send();
+
+}
+
+
+
+
+
+
+
 
 $(document).ready(function () {
                 $("#mylogin").click(function () {
