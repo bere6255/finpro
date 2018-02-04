@@ -1,21 +1,37 @@
 function ajax_call(){
   var xmlhttp = new XMLHttpRequest ();
   var cat=document.getElementById('procat').value;
-    xmlhttp.onreadystatechange = function (){
-        if(xmlhttp.readyState == 4 && xmlhttp.status ==200){
-           document.getElementById('retriv').innerHTML = xmlhttp.responseText;
-
-        }
-    }
-    xmlhttp.open('GET', '/postsubcat?catigory='+cat, true);
-    xmlhttp.send();
-
+if (cat>1) {
+  xmlhttp.onreadystatechange = function (){
+      if(xmlhttp.readyState == 4 && xmlhttp.status ==200){
+         document.getElementById('retriv').innerHTML = xmlhttp.responseText;
+      }
+  }
+  xmlhttp.open('GET', '/postsubcat?catigory='+cat, true);
+  xmlhttp.send();
 }
 
 
+}
+/*
+// this section is not in use
+function populate(catigory, subcatigory){
+  var catigory = document.getElementById(catigory);
+  var subcatigory = document.getElementById(subcatigory);
+  subcatigory.innerHTML="";
+  if(catigory.value=="chevy"){
+    //load from web with vareable of sub_cat
+    var sub_cat = [];
+  }
+  for (var option in sub_cat){
+    var newoption = document.createElement("option");
+    newoption.value = sub_cat;
+    newoption.innerHTML=sub_cat;
+    subcatigory.options.add(newoption);
+  }
+}
 
-
-
+*/
 
 
 

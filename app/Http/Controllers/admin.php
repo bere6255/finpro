@@ -9,8 +9,7 @@ class admin extends Controller
 {
     public function adminloging(){
         $cart = cat::all();
-        $subcat = subcat::all();
-        return view('admin', ['cart'=> $cart, 'subcat'=>$subcat]);
+        return view('admin', ['cart'=> $cart,]);
 
     }
 }

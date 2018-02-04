@@ -173,6 +173,7 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-user"></i></span>
                       <select id="procat" onchange="ajax_call();" name="procat" class="form-control" >
+                        <option value="">please select catigory</option>
                         @if(count($cart)>0)
                             @foreach($cart->all() as $procat)
                               <option value="{{$procat->id}}">{{$procat->	Cart}}</option>
@@ -194,13 +195,12 @@
                   <div class="form-group {{ $errors->has('prosubcat') ? ' has-error' : '' }} ">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                      <div id="retriv" class="input-group">
                       <select id="prosubcat" name="prosubcat" class="form-control">
-                        @if(count($subcat)>0)
-                            @foreach($subcat->all() as $prosubcat)
-                              <option value="{{$prosubcat->id}}">{{$prosubcat->	sub_cat}}</option>
-                            @endforeach
-                        @endif
+
+                          <option value="">please select sub catigory</option>
                       </select>
+                      </div>
                     </div>
                     <div class="input-group">
                       @if ($errors->has('prosubcat'))
@@ -210,47 +210,23 @@
                       @endif
                     </div>
                   </div>
-
-
-<!-- chech point
-                  <div class="form-group {{ $errors->has('prosubcat') ? ' has-error' : '' }} ">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                      <select id="prosubcat" name="prosubcat" class="form-control">
-                        @if(count($subcat)>0)
-                            @foreach($subcat->all() as $prosubcat)
-                              <option value="{{$prosubcat->id}}">{{$prosubcat->	sub_cat}}</option>
-                            @endforeach
-                        @endif
-                      </select>
-                    </div>
-                    <div class="input-group">
-                      @if ($errors->has('prosubcat'))
-                          <span class="btn table-danger">
-                              <strong>{{ $errors->first('prosubcat') }}</strong>
-                          </span>
-                      @endif
-                    </div>
-                  </div>
-
--->
-
-
 
                   <div class="form-group {{ $errors->has('discrib') ? ' has-error' : '' }} ">
-                  <div class="form-group ">
-                    <div id="retriv">testing to see if this will be replaced</div>
-                      <label for="discrib"><b>Discribtion</b></label>
-                      <textarea class="form-control p-input" id="discrib" name="discrib" rows="3" placeholder="Discrib your service" required="true"></textarea>
+                    
+                      <label for="discrib"><b>Discribe your product</b></label>
+
+                      <textarea id="discrib" name="discrib" class="form-control p-input" placeholder="tell about your product" rows="3" required="true"></textarea>
+
+                    <div class="input-group">
+                      @if ($errors->has('discrib'))
+                          <span class="btn table-danger">
+                              <strong>{{ $errors->first('discrib') }}</strong>
+                          </span>
+                      @endif
+                    </div>
                   </div>
-                  <div class="input-group">
-                    @if ($errors->has('discrib'))
-                        <span class="btn table-danger">
-                            <strong>{{ $errors->first('discrib') }}</strong>
-                        </span>
-                    @endif
-                  </div>
-                  </div>
+
+
 
                   <div class="form-group {{ $errors->has('amount') ? ' has-error' : '' }} ">
                     <div class="input-group">
@@ -281,9 +257,6 @@
                       @endif
                     </div>
                   </div>
-
-
-                      <button id="btn" onclick="ajax_call();">check me out</button>
 
                       <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> post your product</button>
 
