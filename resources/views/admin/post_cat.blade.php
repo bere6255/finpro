@@ -54,9 +54,6 @@
 
 
 
-
-
-
   <div class="row mb-2">
   <div class="col-lg-6 mb-4">
       <div class="card">
@@ -129,11 +126,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
 
 
 
@@ -212,7 +204,7 @@
                   </div>
 
                   <div class="form-group {{ $errors->has('discrib') ? ' has-error' : '' }} ">
-                    
+
                       <label for="discrib"><b>Discribe your product</b></label>
 
                       <textarea id="discrib" name="discrib" class="form-control p-input" placeholder="tell about your product" rows="3" required="true"></textarea>

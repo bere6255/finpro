@@ -9,7 +9,7 @@
   @include('inc.slogan')
 @endsection
 @section('content')
-  @include('inc.home_cat')
+  @include('inc.product_dis')
 @endsection
 @section('divider')
   @include('inc.homediv')
