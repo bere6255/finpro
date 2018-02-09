@@ -6,10 +6,10 @@
           <div class="card">
               <div class="card-block">
                   <div class="clearfix">
-                    <a href="#"><img src="{{Storage::url($product->image_url)}}" alt="" style="width:100%; height:25%;  "></a>
+                    <a href="/productdetails?service={{$product->id}}"><img src="{{Storage::url($product->image_url)}}" alt="" style="width:100%; height:25%;  "></a>
                   </div>
                   <div class=" card clearfix">
-                    <a href="#">  <h4 class="font-weight-bold txt-brand-color">{{$product->pro_name}}</h4></a>
+                    <a href="/productdetails?service={{$product->id}}">  <h4 class="font-weight-bold txt-brand-color">{{$product->pro_name}}</h4></a>
                     <h4 class="font-weight-normal text-success"><span class="pull-right">N {{$product->amount}}</span></h4>
                   </div>
                   <div class=" card clearfix">

@@ -20,7 +20,7 @@ Route::post('/admin/catigory', 'cat_control@create_cat');
 Route::post('/admin/subcatigory', 'cat_control@create_subcat');
 Route::post('/admin/product', 'cat_control@create_product');
 Route::get('/product', 'cat_control@getproduct');
-Route::get('/getproduct', 'product_handiler@getproduct');
+Route::get('/productdetails', 'product_handiler@getproduct_details');
 Route::get('/', 'homepage@home')->name('home');
 Route::get('/subcat', 'cat_control@subcat');
 Route::get('/postsubcat', 'cat_control@post_subcat');
