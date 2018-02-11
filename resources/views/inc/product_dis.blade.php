@@ -14,7 +14,7 @@
                   </div>
                   <div class=" card clearfix">
                   <p>
-                  <h6>{{$product->description}}</h6>
+                  <h6>{{str_limit($product->description, $limit = 100, $end = '......')}}</h6>
                   </p>
                 </div>
               </div>

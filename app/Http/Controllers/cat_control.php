@@ -114,8 +114,13 @@ class cat_control extends Controller
 
     public function subcat(Request $request){
       $catigory = $request->get('catigory');
+      if (empty($catigory)) {
+        $cart = cat::all();
+        return view('catigory', ['cart'=> $cart]);
+      }else {
       $subcart = DB::table('subcats')->where('cat', '=', $catigory)->get();
       return view('sub_catigory', ['sub_cat'=> $subcart]);
+      }
     }
 
     public function getproduct(Request $request){
