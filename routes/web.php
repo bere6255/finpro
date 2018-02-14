@@ -27,6 +27,8 @@ Route::get('/postsubcat', 'cat_control@post_subcat');
 Route::get('/catigory', 'cat_control@catigory');
 Route::get('/admin', 'admin@adminloging');
 Route::get('/main', 'main@loadcontent');
+Route::get('/becomeasaller', 'product_handiler@createsaler');
+Route::get('/profile', 'profilecontroller@loadprofile');
 
 
 Route::get('/bayers', function () {

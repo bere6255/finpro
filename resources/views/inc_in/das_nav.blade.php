@@ -21,6 +21,9 @@
             <li class="nav-item">
             <a href="/logout" class="btn btn-danger" id="logout">Logout</a>
             </li>
+            <li class="nav-item">
+            <a href="/becomeasaller" class="btn btn-secondary" id="logout">become a seller</a>
+            </li>
           @endif
         </ul>
         <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">

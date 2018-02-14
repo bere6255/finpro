@@ -13,6 +13,21 @@ if (cat>1) {
 
 
 }
+
+
+function main_seach(){
+
+  var http = new XMLHttpRequest ();
+  var subcat=document.getElementById('prosubcat').value;
+  alert('page content: ' + subcat);
+  if (subcat>1) {
+  http.open('GET', '/main?service='+subcat, false);
+  http.send(null);
+
+}
+
+
+}
 /*
 // this section is not in use
 function populate(catigory, subcatigory){
