@@ -17,7 +17,7 @@
                 @endif
                 @if(Auth::user())
                   <li class="nav-item">
-                  <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
+                  <a class="nav-link profile-pic" href="/profile"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
                   </li>
                   <li class="nav-item">
                   <a href="/logout" class="btn btn-danger" id="logout">Logout</a>
