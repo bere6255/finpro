@@ -21,19 +21,5 @@ class main extends Controller
     //return ['sub_cat'=> $subcart];
   }
 
-  public function loadcontent(Request $request){
-      $products = $request->get('service');
-      $maimsub = $request->get('prosubcat');
-      if (!empty($maimsub)) {
-        $products=$maimsub;
-      }
-      if (empty($products)) {
-        $mainproduct = products::inRandomOrder()->get();
-      }else {
-      $mainproduct = DB::table('products')->where('sub_cat', '=', $products)->get();
-      }
-      $cart = cat::all();
-      return view('main', ['producting_main'=> $mainproduct, 'cart'=> $cart]);
-
-  }
+  
 }
