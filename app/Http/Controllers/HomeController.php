@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\cat;
+use App\products;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $product = products::inRandomOrder()->get();
+      $cart = cat::all();
+      return view('home', ['cart'=> $cart, 'produc'=>$product]);
     }
 }

@@ -3,14 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\User;
 class RegisterController extends Controller
 {
+
+  public function Create(){
+    return view('log');
+  }
+  public function Login(){
+    if (!auth()->attempt(request(['email','password']))){
+      return view('log')->withErrors('Users email or password incorrate');
+      exit();
+    }
+     return redirect()->home();
+  }
+
+  public function logout(){
+    Auth::logout();
+    return redirect()->home();
+  }
+
     public function load(){
       return view('reg');
     }
 
-    public function create(Request $request){
+    public function register(Request $request){
       // validate the forms
      $this->velidata($request);
     }
@@ -28,6 +46,7 @@ class RegisterController extends Controller
        $user->email = $request->input('email');
        $user->password =  bcrypt($request->input('passwordreg'));
        $user->status = "bayer";
+       $user->level = 0;
        $user->save();
          // autor sign
          auth()->login($user);

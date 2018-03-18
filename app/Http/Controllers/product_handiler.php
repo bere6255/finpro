@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use\App\products;
+use Auth;
 use App\cat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class product_handiler extends Controller
     }
 
     public function createsaler(){
-      return "am here now you can continue";
+      DB::table('users')->where('users_id', Auth::user()->id)->update(['status' => "seller", 'level' => 1]);
+      return redirect('seller');
     }
 
 }

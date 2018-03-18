@@ -12,7 +12,6 @@
                                                   <strong><b>{{ $error}}</b></strong>
                                               </span>
                                             <?php endforeach; ?>
-
                                         @endif
                                         <div class="form-group">
                                           <div class="input-group">

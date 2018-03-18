@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/login', 'SessionsController@Create');
-Route::get('/logout', 'SessionsController@logout');
-Route::post('/login', 'SessionsController@Login');
-Route::post('/register', 'RegisterController@Create');
+Route::get('/login', 'RegisterController@Create');
+Route::get('/logout', 'RegisterController@logout');
+Route::post('/login', 'RegisterController@Login');
+Route::post('/register', 'RegisterController@register');
 Route::get('/register', 'RegisterController@load');
 Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
@@ -21,14 +21,15 @@ Route::post('/admin/subcatigory', 'cat_control@create_subcat');
 Route::post('/admin/product', 'cat_control@create_product');
 Route::get('/product', 'cat_control@getproduct');
 Route::get('/productdetails', 'product_handiler@getproduct_details');
-Route::get('/', 'homepage@home')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/subcat', 'cat_control@subcat');
 Route::get('/postsubcat', 'cat_control@post_subcat');
 Route::get('/catigory', 'cat_control@catigory');
 Route::get('/admin', 'admin@adminloging');
 Route::get('/main', 'main@loadcontent');
 Route::get('/becomeasaller', 'product_handiler@createsaler');
-Route::get('/profile', 'profilecontroller@loadprofile');
+Route::get('/profile', 'HomeController@loadprofile');
+Route::get('/becomeasaller', 'product_handiler@createsaler')->name('seller');
 
 
 Route::get('/bayers', function () {
