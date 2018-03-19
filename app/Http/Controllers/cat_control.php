@@ -13,6 +13,19 @@ class cat_control extends Controller
 {
 
 
+  public function postsub(Request $request){
+    $catigory = $request->get('catigory');
+    $subcart = DB::table('subcats')->where('cat', '=', $catigory)->get();
+    echo "<select id='prosubcat_post' name='prosubcat_post' class='form-control' >";
+
+  foreach ($subcart->all() as $sub) {
+    echo "<option value='$sub->id'>"; echo $sub->sub_cat; echo "</option>";
+  //echo '<option"';echo 'value="' echo '$sub->sub_cat';  echo'">'; echo $sub->sub_cat;  echo "</option>";
+  }
+    echo "</select>";
+    //return ['sub_cat'=> $subcart];
+  }
+
   public function post_subcat(Request $request){
     $catigory = $request->get('catigory');
     $subcart = DB::table('subcats')->where('cat', '=', $catigory)->get();
@@ -71,15 +84,15 @@ class cat_control extends Controller
     public function create_product(request $request){
       $this->Validate($request, [
          'product_name'=> 'required',
-         'procat'=> 'required',
-         'prosubcat'=>'required',
+         'procat_post'=> 'required',
+         'prosubcat_post'=>'required',
          'discrib'=>'required',
          'amount'=>'required'
        ]);
 
       $name="Prodoct_".md5("bereobong" . microtime()).".jpg";
       $prod_name = $request->input('product_name');
-      $catigory = $request->input('procat');
+      $catigory = $request->input('procat_post');
       $subcatigory = $request->input('prosubcat');
       $discription = $request->input('discrib');
       $amount = $request->input('amount');

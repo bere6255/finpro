@@ -21,9 +21,16 @@
             <li class="nav-item">
             <a href="/logout" class="btn btn-danger" id="logout">Logout</a>
             </li>
-            <li class="nav-item">
-            <a href="/becomeasaller" class="btn btn-secondary" id="logout">become a seller</a>
-            </li>
+            <?php if (Auth::user()->status !="seller"): ?>
+              <li class="nav-item">
+              <a href="/becomeasaller" class="btn btn-secondary" id="logout">become a seller</a>
+              </li>
+            <?php else: ?>
+              <li class="nav-item">
+              <a href="/dashboard" class="btn btn-secondary" id="logout">Dashboard</a>
+              </li>
+            <?php endif; ?>
+
           @endif
         </ul>
         <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">

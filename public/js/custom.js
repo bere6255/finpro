@@ -14,6 +14,22 @@ if (cat>1) {
 
 }
 
+function ajax_post(){
+  var xmlhttp = new XMLHttpRequest ();
+  var cat=document.getElementById('procat_post').value;
+if (cat>1) {
+  xmlhttp.onreadystatechange = function (){
+      if(xmlhttp.readyState == 4 && xmlhttp.status ==200){
+         document.getElementById('retriv_post').innerHTML = xmlhttp.responseText;
+      }
+  }
+  xmlhttp.open('GET', '/postsub?catigory='+cat, true);
+  xmlhttp.send();
+}
+
+
+}
+
 
 function main_seach(){
 
@@ -28,26 +44,6 @@ function main_seach(){
 
 
 }
-/*
-// this section is not in use
-function populate(catigory, subcatigory){
-  var catigory = document.getElementById(catigory);
-  var subcatigory = document.getElementById(subcatigory);
-  subcatigory.innerHTML="";
-  if(catigory.value=="chevy"){
-    //load from web with vareable of sub_cat
-    var sub_cat = [];
-  }
-  for (var option in sub_cat){
-    var newoption = document.createElement("option");
-    newoption.value = sub_cat;
-    newoption.innerHTML=sub_cat;
-    subcatigory.options.add(newoption);
-  }
-}
-
-*/
-
 
 
 $(document).ready(function () {

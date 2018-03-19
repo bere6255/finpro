@@ -24,12 +24,15 @@ Route::get('/productdetails', 'product_handiler@getproduct_details');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/subcat', 'cat_control@subcat');
 Route::get('/postsubcat', 'cat_control@post_subcat');
+Route::get('/postsub', 'cat_control@postsub');
 Route::get('/catigory', 'cat_control@catigory');
 Route::get('/admin', 'admin@adminloging');
 Route::get('/main', 'HomeController@loadcontent');
 Route::get('/becomeasaller', 'product_handiler@createsaler');
 Route::get('/profile', 'HomeController@loadprofile');
-Route::get('/becomeasaller', 'product_handiler@createsaler')->name('seller');
+Route::get('/becomeasaller', 'product_handiler@createsaler');
+Route::get('/seller', 'accountting@load_seller')->name('seller');
+Route::get('/dashboard', 'accountting@load_seller');
 
 
 Route::get('/bayers', function () {

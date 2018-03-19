@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use App\cat;
 use App\products;
@@ -15,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      //  $this->middleware('auth');
     }
 
     /**
@@ -45,6 +46,17 @@ class HomeController extends Controller
 
     }
     public function loadprofile(){
+    if (auth::guest()) {
+        return view('log');
+    }
+    $user=auth::user();
+
+// to becontinued //////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////
       $cart = cat::all();
       return view('sellers',['cart'=> $cart]);
     }

@@ -16,7 +16,7 @@ class RegisterController extends Controller
       return view('log')->withErrors('Users email or password incorrate');
       exit();
     }
-     return redirect()->home();
+     return back();
   }
 
   public function logout(){

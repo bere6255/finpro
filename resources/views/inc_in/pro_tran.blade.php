@@ -4,44 +4,32 @@
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-success">7874</h4>
-                                    <p class="card-text">Visitors</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                    </div>
+                                    <h4 class="card-title font-weight-normal text-success">N 7874</h4>
+                                    <p class="card-text">Available Balance</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-info">75632</h4>
-                                    <p class="card-text ">Sales</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
-                                    </div>
+                                    <h4 class="card-title font-weight-normal text-info">N 75632</h4>
+                                    <p class="card-text ">Potential Balance</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-warning">2156</h4>
-                                    <p class="card-text">Orders</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                    </div>
+                                    <h4 class="card-title font-weight-normal text-warning">N 2156</h4>
+                                    <p class="card-text">Last Transaction</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-danger">$ 89623</h4>
-                                    <p class="card-text">Revenue</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                    </div>
+                                    <h4 class="card-title font-weight-normal text-danger">N 89623</h4>
+                                    <p class="card-text">Last Deposit</p>
                                 </div>
                             </div>
                         </div>
@@ -49,16 +37,141 @@
                     <div class="row">
                         <div class="col-lg-6  mb-4">
                             <div class="card">
-                                <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                    <h5 class="card-title mb-4">Sales</h5>
-                                    <canvas id="lineChart" style="height: 250px; display: block; width: 501px;" width="501" height="250"></canvas>
-                                </div>
+                              <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                                    <h4 class="card-title  text-left mb-5 mt-4">Add Product</h4>
+                                    @if (session('product_info'))
+                                        <span class="btn btn-success">
+                                            <strong>{{ session('product_info') }}</strong>
+                                        </span>
+                                    @endif
+                                      <form name="product_form" role="form" method="post" action="/admin/product" enctype="multipart/form-data">
+                                        {{ csrf_field()}}
+
+
+                                        <div class="form-group {{ $errors->has('product_name') ? ' has-error' : '' }} ">
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" id="product_name" name="product_name" class="form-control p_input" placeholder="Enter product name" required="true">
+                                          </div>
+                                          <div class="input-group">
+                                            @if ($errors->has('product_name'))
+                                                <span class="btn table-danger">
+                                                    <strong>{{ $errors->first('product_name') }}</strong>
+                                                </span>
+                                            @endif
+                                          </div>
+                                        </div>
+
+
+
+                                        <div class="form-group {{ $errors->has('procat_post') ? ' has-error' : '' }} ">
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <select id="procat_post" onchange="ajax_post();" name="procat_post" class="form-control" >
+                                              <option value="">please select catigory</option>
+                                              @if(count($cart)>0)
+                                                  @foreach($cart->all() as $procat_post)
+                                                    <option value="{{$procat_post->id}}">{{$procat_post->	Cart}}</option>
+                                                  @endforeach
+                                              @endif
+                                            </select>
+                                          </div>
+                                          <div class="input-group">
+                                            @if ($errors->has('procat_post'))
+                                                <span class="btn table-danger">
+                                                    <strong>{{ $errors->first('procat_post') }}</strong>
+                                                </span>
+                                            @endif
+                                          </div>
+                                        </div>
+
+
+
+                                        <div class="form-group {{ $errors->has('prosubcat') ? ' has-error' : '' }} ">
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <div id="retriv_post" class="input-group">
+                                            <select id="prosubcat_post" name="prosubcat_post" class="form-control">
+
+                                                <option value="">please select sub catigory</option>
+                                            </select>
+                                            </div>
+                                          </div>
+                                          <div class="input-group">
+                                            @if ($errors->has('prosubcat'))
+                                                <span class="btn table-danger">
+                                                    <strong>{{ $errors->first('prosubcat') }}</strong>
+                                                </span>
+                                            @endif
+                                          </div>
+                                        </div>
+
+                                        <div class="form-group {{ $errors->has('discrib') ? ' has-error' : '' }} ">
+
+                                            <label for="discrib"><b>Discribe your product</b></label>
+
+                                            <textarea id="discrib" name="discrib" class="form-control p-input" placeholder="tell about your product" rows="3" required="true"></textarea>
+
+                                          <div class="input-group">
+                                            @if ($errors->has('discrib'))
+                                                <span class="btn table-danger">
+                                                    <strong>{{ $errors->first('discrib') }}</strong>
+                                                </span>
+                                            @endif
+                                          </div>
+                                        </div>
+
+
+
+                                        <div class="form-group {{ $errors->has('amount') ? ' has-error' : '' }} ">
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" id="amount" name="amount" class="form-control p_input" placeholder="Enter amount for the service" required="true">
+                                          </div>
+                                          <div class="input-group">
+                                            @if ($errors->has('amount'))
+                                                <span class="btn table-danger">
+                                                    <strong>{{ $errors->first('amount') }}</strong>
+                                                </span>
+                                            @endif
+                                          </div>
+                                        </div>
+
+
+
+                                        <div class="form-group {{ $errors->has('pro_img') ? ' has-error' : '' }} ">
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-file-photo-o (alias)"></i></span>
+                                            <input type="file" id="pro_img" name="pro_img" class="form-control p_input" required="true"/>
+                                          </div>
+                                          <div class="input-group">
+                                            @if ($errors->has('pro_img'))
+                                                <span class="btn table-danger">
+                                                    <strong>{{ $errors->first('pro_img') }}</strong>
+                                                </span>
+                                            @endif
+                                          </div>
+                                        </div>
+
+                                            <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> post your product</button>
+
+                                      </form>
+
+                                    </div>
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                         <div class="col-lg-6  mb-4">
                             <div class="card">
                                 <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                    <h5 class="card-title mb-4">Customer Satisfaction</h5>
+                                    <h5 class="card-title mb-4">My Gigs</h5>
                                     <canvas id="doughnutChart" style="height: 250px; display: block; width: 501px;" width="501" height="250"></canvas>
                                 </div>
                             </div>
@@ -68,7 +181,7 @@
                         <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h5 class="card-title mb-4">Payments</h5>
+                                    <h5 class="card-title mb-4">My Services</h5>
                                     <table class="table">
                                         <thead class="text-primary">
                                             <tr>
@@ -114,13 +227,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h5 class="card-title"></h5>
-                                    <div id="map" style="min-height: 415px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div style="overflow: hidden;"></div><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -32, -20);"><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -256px; top: -256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: -256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: -256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 0px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -32, -20);"></div></div></div><div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div><div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div><iframe frameborder="0" src="about:blank" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;"></iframe></div></div></div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
