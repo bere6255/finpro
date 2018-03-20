@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use\App\account;
 use App\cat;
 use App\products;
 use Illuminate\Http\Request;
@@ -49,15 +50,26 @@ class HomeController extends Controller
     if (auth::guest()) {
         return view('log');
     }
-    $user=auth::user();
+      $user=auth::user();
+    $this->create_account($user['id']);
 
-// to becontinued //////////////////////////////////////////
+    $users_account = DB::table('accounts')->where('users_id', '=', $user['id'])->get();
 
-
-
-
-////////////////////////////////////////////////////////
       $cart = cat::all();
-      return view('sellers',['cart'=> $cart]);
+      return view('sellers',['cart'=> $cart, 'account'=>$users_account]);
+    }
+
+    private function create_account($user){
+
+      $users_account = DB::table('accounts')->where('users_id', '=', $user)->get();
+
+      if (empty($users_account[0]->users_id)) {
+        $sellers_acc = new account;
+        $sellers_acc->users_id =Auth::user()->id;
+        $sellers_acc->balance =0;
+        $sellers_acc->last_tran =0;
+        $sellers_acc->for_tran ="No transaction yet";
+        $sellers_acc->save();
+      }
     }
 }

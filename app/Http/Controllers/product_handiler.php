@@ -20,12 +20,6 @@ class product_handiler extends Controller
 
     public function createsaler(){
       DB::table('users')->where('id', Auth::user()->id)->update(['status' => "seller", 'level' => 1]);
-      $sellers_acc = new account;
-      $sellers_acc->users_id =Auth::user()->id;
-      $sellers_acc->balance =0;
-      $sellers_acc->last_tran =0;
-      $sellers_acc->for_tran ="No transaction yet";
-      $sellers_acc->save();
       return redirect('seller');
     }
 

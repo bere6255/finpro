@@ -31,8 +31,8 @@ Route::get('/main', 'HomeController@loadcontent');
 Route::get('/becomeasaller', 'product_handiler@createsaler');
 Route::get('/profile', 'HomeController@loadprofile');
 Route::get('/becomeasaller', 'product_handiler@createsaler');
-Route::get('/seller', 'accountting@load_seller')->name('seller');
-Route::get('/dashboard', 'accountting@load_seller');
+Route::get('/seller', 'HomeController@loadprofile')->name('seller');
+Route::get('/dashboard', 'HomeController@loadprofile');
 
 
 Route::get('/bayers', function () {

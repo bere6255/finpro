@@ -8,6 +8,7 @@ use Auth;
 use App\cat;
 class accountting extends Controller
 {
+  /*
   public function load_seller(){
     $cart = cat::all();
     return view('sellers', ['cart'=> $cart,]);
@@ -15,4 +16,5 @@ class accountting extends Controller
   public function load_bayer(){
   //  return view('seller');
   }
+  */
 }

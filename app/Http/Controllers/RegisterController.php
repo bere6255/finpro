@@ -21,16 +21,22 @@ class RegisterController extends Controller
 
   public function logout(){
     Auth::logout();
-    return redirect()->home();
+    return redirect('/');
   }
 
     public function load(){
+      if (!Auth::guest()) {
+          return redirect('/');
+      }
       return view('reg');
     }
 
     public function register(Request $request){
-      // validate the forms
+      if (!Auth::guest()) {
+          return redirect('/');
+      }
      $this->velidata($request);
+     return redirect('/profile');
     }
 
     private function velidata( $request){
@@ -50,8 +56,9 @@ class RegisterController extends Controller
        $user->save();
          // autor sign
          auth()->login($user);
+
          //redirect to dashboard
-         return redirect()->home();
+
     }
 
 }
