@@ -14,11 +14,16 @@
                                           <div class="text-center mt-3">
                                               <h3 class="font-weight-bold txt-brand-color">{{$product->pro_name}}s</h3>
                                           </div>
-                                          <p class="font-italic text-muted mt-3">
+                                          <p class="font-italic text-center mt-3">
                                               {{$product->description}}
                                           </p>
-                                          <h5 class="text-center font-weight-bold txt-brand-color">Tom Swayer</h5>
-                                          <h6 class="text-center text-muted">CEO/CO-FOUNDER</h6>
+                                          @if(count($seller)>0)
+                                                @foreach($seller->all() as $seller)
+                                          <h5 class="text-center font-weight-bold txt-brand-color">{{$seller->fullname}}</h5>
+                                          <h6 class="text-center text-muted"><b>Level:</b> {{$seller->level}}</h6>
+                                                @endforeach
+                                          @endif
+                                          <button type="button" class="btn btn-success float-right">Order</button>
                                       </div>
 
                                     </div>

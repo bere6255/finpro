@@ -54,9 +54,10 @@ class HomeController extends Controller
     $this->create_account($user['id']);
 
     $users_account = DB::table('accounts')->where('users_id', '=', $user['id'])->get();
+    $gits = DB::table('products')->where('user_id', '=', $user['id'])->get();
 
       $cart = cat::all();
-      return view('sellers',['cart'=> $cart, 'account'=>$users_account]);
+      return view('sellers',['cart'=> $cart, 'account'=>$users_account, 'mygits'=>$gits]);
     }
 
     private function create_account($user){

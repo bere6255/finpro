@@ -38,10 +38,99 @@
                     </div>
                     @endforeach
                     @endif
+
+                    <div class="row ">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h5 class="card-title mb-4">Transaction Hystory</h5>
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th><i class="fa fa-user ml-2"></i></th>
+                                                <th>User</th>
+                                                <th>Item</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
+                                                <td>Larry</td>
+                                                <td>Acer</td>
+                                                <td><span class="badge badge-success">Success</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
+                                                <td>Larry</td>
+                                                <td>Acer</td>
+                                                <td><span class="badge badge-danger">Failed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
+                                                <td>Larry</td>
+                                                <td>Acer</td>
+                                                <td><span class="badge badge-primary">Processing</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
+                                                <td>Larry</td>
+                                                <td>Acer</td>
+                                                <td><span class="badge badge-success">Success</span></td>
+                                            </tr>
+                                            <tr>
+                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
+                                                <td>Larry</td>
+                                                <td>Acer</td>
+                                                <td><span class="badge badge-danger">Failed</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <?php if (Auth::user()->status=="seller"): ?>
 
                       <div class="row">
-                          <div class="col-lg-6  mb-4">
+
+                        <div class="col-lg-12  mb-4">
+                          <div class="card">
+                          <div class="card-block">
+                              <h5 class="card-title mb-4">My Gigs</h5>
+                              <table class="table">
+                                  <thead class="text-primary">
+                                      <tr>
+                                          <th>Name</th>
+                                          <th>Discription</th>
+                                          <th>Amount</th>
+                                          <th><span class="badge badge-warning">Edite Post</span></th>
+                                          <th><span class="badge badge-danger">Delite Post</span></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    @if(count($mygits)>0)
+                                      @foreach($mygits->all() as $git)
+                                      <tr>
+                                          <th>{{$git -> pro_name}}</th>
+                                          <td>{{$git -> description}}</td>
+                                          <td>{{$git -> amount}}</td>
+                                          <td><a href="/user/edite_post?edit={{$git->	id}}" class="btn btn-warning btn-sm">Edite Post</a></td>
+                                          <td><a href="/user/delite_post?jes={{$git->	id}}" class="btn btn-danger btn-sm">Delite Post</a></td>
+
+                                      </tr>
+                                      @endforeach
+                                      @endif
+                                  </tbody>
+                              </table>
+                          </div>
+                        </div>
+                      </div>
+
+
+                          <div class="col-lg-12  mb-4">
                               <div class="card">
                                 <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
                                       <h4 class="card-title  text-left mb-5 mt-4">Add Product</h4>
@@ -169,70 +258,7 @@
                                   </div>
 
 
-
-
-
-
-                        <div class="col-lg-6  mb-4">
-                            <div class="card">
-                                <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                    <h5 class="card-title mb-4">My Gigs</h5>
-                                    <canvas id="doughnutChart" style="height: 250px; display: block; width: 501px;" width="501" height="250"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                          </div>
                     <?php endif; ?>
-                    <div class="row ">
-                        <div class="col-lg-12 mb-4">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h5 class="card-title mb-4">Transaction Hystory</h5>
-                                    <table class="table">
-                                        <thead class="text-primary">
-                                            <tr>
-                                                <th><i class="fa fa-user ml-2"></i></th>
-                                                <th>User</th>
-                                                <th>Item</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-success">Success</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-danger">Failed</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-primary">Processing</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-success">Success</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-danger">Failed</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
                 </div>

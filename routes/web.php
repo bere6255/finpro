@@ -19,6 +19,8 @@ Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
 Route::post('/admin/subcatigory', 'cat_control@create_subcat');
 Route::post('/admin/product', 'cat_control@create_product');
+Route::get('/user/edite_post', 'cat_control@editepost');
+Route::get('/user/delite_post', 'cat_control@delitepost');
 Route::get('/product', 'cat_control@getproduct');
 Route::get('/productdetails', 'product_handiler@getproduct_details');
 Route::get('/', 'HomeController@index')->name('home');

@@ -93,7 +93,7 @@ class cat_control extends Controller
       $name="Prodoct_".md5("bereobong" . microtime()).".jpg";
       $prod_name = $request->input('product_name');
       $catigory = $request->input('procat_post');
-      $subcatigory = $request->input('prosubcat');
+      $subcatigory = $request->input('prosubcat_post');
       $discription = $request->input('discrib');
       $amount = $request->input('amount');
       if ($request->hasFile('pro_img')) {
@@ -143,6 +143,13 @@ class cat_control extends Controller
       return view('main', ['product'=> $subcart]);
     }
 
+    public function editepost(){
+      return "welcome in edite post";
+    }
+
+    public function delitepost(){
+      return "welcome in delite post";
+    }
 
 
 }

@@ -13,8 +13,9 @@ class product_handiler extends Controller
     public function getproduct_details(Request $request){
         $product_id = $request->get('service');
         $getproduct = DB::table('products')->where('id', '=', $product_id)->get();
+        $getseller = DB::table('users')->where('id', '=', $getproduct[0]->user_id)->get();
         $cart = cat::all();
-        return view('product_details', ['product'=> $getproduct, 'cart'=> $cart]);
+        return view('product_details', ['product'=> $getproduct, 'seller'=> $getseller, 'cart'=> $cart]);
 
     }
 
