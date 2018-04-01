@@ -30,8 +30,8 @@
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-info">N {{$acc_bal -> for_tran}}</h4>
-                                    <p class="card-text">Last Deposit</p>
+                                    <h4 class="card-title font-weight-normal text-info">{{$acc_bal -> for_tran}}</h4>
+                                    <p class="card-text">For</p>
                                 </div>
                             </div>
                         </div>

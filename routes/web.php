@@ -15,6 +15,8 @@ Route::get('/logout', 'RegisterController@logout');
 Route::post('/login', 'RegisterController@Login');
 Route::post('/register', 'RegisterController@register');
 Route::get('/register', 'RegisterController@load');
+Route::get('/update', 'RegisterController@loadupdate');
+Route::post('/update_pro', 'RegisterController@updateuser');
 Route::get('/setup', 'setup@testing');
 Route::post('/admin/catigory', 'cat_control@create_cat');
 Route::post('/admin/subcatigory', 'cat_control@create_subcat');
@@ -35,6 +37,7 @@ Route::get('/profile', 'HomeController@loadprofile');
 Route::get('/becomeasaller', 'product_handiler@createsaler');
 Route::get('/seller', 'HomeController@loadprofile')->name('seller');
 Route::get('/dashboard', 'HomeController@loadprofile');
+Route::get('/order','product_handiler@order_product');
 
 
 Route::get('/bayers', function () {

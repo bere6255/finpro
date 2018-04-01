@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\cat;
 use Auth;
 use App\User;
 class RegisterController extends Controller
@@ -17,6 +18,19 @@ class RegisterController extends Controller
       exit();
     }
      return back();
+  }
+
+  public function loadupdate(){
+    if (Auth::guest()) {
+        return redirect('/');
+    }
+    $cart = cat::all();
+    return view('updateprofile', ['cart'=> $cart]);
+  }
+  public function updateuser(){
+    if (Auth::guest()) {
+        return redirect('/');
+    }
   }
 
   public function logout(){

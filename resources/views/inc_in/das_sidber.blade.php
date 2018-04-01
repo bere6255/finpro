@@ -1,10 +1,10 @@
 <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
 <div class="user-info">
     @if(Auth::user())
-      <img src="images/face.jpg" alt="">
+      <img src="{{Storage::url(Auth::user()->img_url)}}" alt="">
       <p class="name">{{Auth::user()->fullname}}</p>
-      <p class="designation">Manager</p>
-      <span class="online"></span>
+      <p class="designation">Level: {{Auth::user()->level}}</p>
+      <a href="/update" class="btn btn-outline-warning">Edite Profile</a>
 
     @endif
 </div>
