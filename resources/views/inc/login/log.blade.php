@@ -4,7 +4,7 @@
                                 <div class="card-block">
                                   <div class=" modal-body" style="padding:40px 50px;">
                                     <h3 class="card-title text-primary text-left mb-5 mt-4">Login</h3>
-                                      <form name="login_form" role="form" method="post" onsubmit="return log_validateForm()" action="/login">
+                                      <form name="login_form" role="form" method="post" onsubmit="return log_validateForm()" action="/login_main">
                                         {{ csrf_field()}}
                                         @if (count($errors)>0)
                                             <?php foreach ($errors ->all() as $error): ?>

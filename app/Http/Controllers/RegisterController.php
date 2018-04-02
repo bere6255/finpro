@@ -19,6 +19,13 @@ class RegisterController extends Controller
     }
      return back();
   }
+  public function login_main(){
+    if (!auth()->attempt(request(['email','password']))){
+      return view('log')->withErrors('Users email or password incorrate');
+      exit();
+    }
+     return redirect('/main');
+  }
 
   public function loadupdate(){
     if (Auth::guest()) {
@@ -50,7 +57,7 @@ class RegisterController extends Controller
           return redirect('/');
       }
      $this->velidata($request);
-     return redirect('/profile');
+     return redirect('/main');
     }
 
     private function velidata( $request){
@@ -67,7 +74,9 @@ class RegisterController extends Controller
        $user->password =  bcrypt($request->input('passwordreg'));
        $user->status = "bayer";
        $user->level = 0;
+       $user->img_url = "defaut_priflepicture.jpg";
        $user->save();
+
          // autor sign
          auth()->login($user);
 

@@ -34,12 +34,26 @@ class product_handiler extends Controller
       $seller_id = $request->get('$product_seller');
       if (Auth::guest()) {
         // remember order write to session product_id
-        DB::table('users')->where('id', Auth::user()->id)->update(['status' => "seller", 'level' => 1]);
-          return redirect('/login');
+
+          return redirect('/login')->Cookie('product', $product_id, 60);
       }
       $bayer= Auth::user();
       return $bayer;
 
 
+    }
+    public function comment_post(Request $request){
+    /*  $this->Validate($request, [
+         'reg_usrname'=> 'required',
+         'email'=> 'required|unique:users',
+         'passwordreg'=>'required|confirmed'
+       ]);
+       //creating the user
+         //$user = User::create($request, ['reg_usrname', 'reg_mail', 'reg_psw'] );
+       $user=new User;
+       $user->fullname = $request->input('reg_usrname');
+       $user->email = $request->input('email');
+       */
+       return $request;
     }
 }

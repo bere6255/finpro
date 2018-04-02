@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/login', 'RegisterController@Create');
 Route::get('/logout', 'RegisterController@logout');
 Route::post('/login', 'RegisterController@Login');
+Route::post('/login_main', 'RegisterController@login_main');
 Route::post('/register', 'RegisterController@register');
 Route::get('/register', 'RegisterController@load');
 Route::get('/update', 'RegisterController@loadupdate');
@@ -38,6 +39,7 @@ Route::get('/becomeasaller', 'product_handiler@createsaler');
 Route::get('/seller', 'HomeController@loadprofile')->name('seller');
 Route::get('/dashboard', 'HomeController@loadprofile');
 Route::get('/order','product_handiler@order_product');
+Route::get('/comment_com','product_handiler@comment_post');
 
 
 Route::get('/bayers', function () {

@@ -21,6 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('status');
+            $table->integer('level');
+            $table->string('about');
+            $table->string('img_url');
+            $table->string('activation');
             $table->rememberToken();
             $table->timestamps();
         });

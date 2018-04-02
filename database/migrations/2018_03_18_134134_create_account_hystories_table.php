@@ -15,6 +15,10 @@ class CreateAccountHystoriesTable extends Migration
     {
         Schema::create('account_hystories', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('users_id');
+            $table->integer('balance');
+            $table->integer('last_tran');
+            $table->string('for_tran');
             $table->timestamps();
         });
     }

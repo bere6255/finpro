@@ -32,20 +32,32 @@ class HomeController extends Controller
       return view('home', ['cart'=> $cart, 'produc'=>$product]);
     }
     public function loadcontent(Request $request){
-        $products = $request->get('service');
-        $maimsub = $request->get('prosubcat');
-        if (!empty($maimsub)) {
-          $products=$maimsub;
-        }
-        if (empty($products)) {
-          $mainproduct = products::inRandomOrder()->get();
+        $cookie_value = $request->cookie('product');
+        if (!empty($cookie_value)) {
+          $getproduct = DB::table('products')->where('id', '=', $cookie_value)->get();
+          if (!empty($getproduct{0}->id)) {
+            $getseller = DB::table('users')->where('id', '=', $getproduct[0]->user_id)->get();
+            $cart = cat::all();
+              return view('product_details', ['product'=> $getproduct, 'seller'=> $getseller, 'cart'=> $cart]);
+            }
         }else {
-        $mainproduct = DB::table('products')->where('sub_cat', '=', $products)->get();
+          $products = $request->get('service');
+          $maimsub = $request->get('prosubcat');
+          if (!empty($maimsub)) {
+            $products=$maimsub;
+          }
+          if (empty($products)) {
+            $mainproduct = products::inRandomOrder()->get();
+          }else {
+          $mainproduct = DB::table('products')->where('sub_cat', '=', $products)->get();
+          }
+          $cart = cat::all();
+          return view('main', ['producting_main'=> $mainproduct, 'cart'=> $cart]);
         }
-        $cart = cat::all();
-        return view('main', ['producting_main'=> $mainproduct, 'cart'=> $cart]);
+
 
     }
+
     public function loadprofile(){
     if (auth::guest()) {
         return view('log');
