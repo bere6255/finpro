@@ -53,73 +53,48 @@
 
 
 <div class="row">
+  @if(count($comments)>0)
+        @foreach($comments->all() as $commenters)
+
   <div class="col-lg-8  mb-4">
   <div class="card">
       <div class="card-block ">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                        <img src="{{Storage::url($commenters->commenters_img_url)}}" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
-                            <a href="#"><b>Ryan Haywood</b></a>
+                            <b>{{$commenters->commenters_name}}</b>
                             made a post.
                         </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
+                        <h6 class="text-muted time">{{$commenters->created_at}}</h6>
                     </div>
                 </div>
                 <div class="post-description">
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
-                    </div>
+                    <p>{{$commenters->comment}}</p>
+
                 </div>
             </div>
           </div>
         </div>
-          </div>
-            <div class="col-lg-8  mb-4">
-              <div class="card">
-                <div class="card-block ">
-            <div class="panel panel-white post panel-shadow">
-                <div class="post-heading">
-                    <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
-                    </div>
-                    <div class="pull-left meta">
-                        <div class="title h5">
-                            <a href="#"><b>Ryan Haywood</b></a>
-                            made a post.
-                        </div>
-                        <h6 class="text-muted time">1 minute ago</h6>
-                    </div>
-                </div>
-                <div class="post-description">
-                    <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
-                    <div class="stats">
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-up icon"></i>2
-                        </a>
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
-                        </a>
-                    </div>
-                </div>
-            </div>
-          </div>
       </div>
-    </div>
+      @endforeach
+    @endif
     @if (!Auth::guest())
       <div class="col-lg-8  ">
         <div class="card">
           <div class="card-block ">
             <div class="form-group">
+              <h5 class="font-weight-bold txt-brand-color">Comment</h5>
+              @if (count($errors)>0)
+                  <?php foreach ($errors ->all() as $error): ?>
+                    <span class="btn btn-danger">
+                        <strong><b>{{ $error}}</b></strong>
+                    </span>
+                  <?php endforeach; ?>
+              @endif
   					<textarea name="comm_com" id="comm_com" value="${item.value}" class="form-control p-input" rows="5" placeholder="please type your comment" required="true"></textarea>
           </div>
             <a href='' onclick="this.href='/comment_com?product={{$product->id}}&comment='+document.getElementById('comm_com').value" class="btn btn-success green"><i class="fa fa-share"></i> Post a comment</a>

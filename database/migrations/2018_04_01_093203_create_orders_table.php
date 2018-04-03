@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('add_on');
             $table->integer('amount');
             $table->string('status');
-            $table->string('for_tran');
+            $table->string('order_id');
             $table->timestamps();
 
         });

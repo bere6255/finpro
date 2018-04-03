@@ -35,10 +35,12 @@ class HomeController extends Controller
         $cookie_value = $request->cookie('product');
         if (!empty($cookie_value)) {
           $getproduct = DB::table('products')->where('id', '=', $cookie_value)->get();
+            $getcomment = DB::table('comments')->where('product_id', '=', $cookie_value)->get();
           if (!empty($getproduct{0}->id)) {
             $getseller = DB::table('users')->where('id', '=', $getproduct[0]->user_id)->get();
+
             $cart = cat::all();
-              return view('product_details', ['product'=> $getproduct, 'seller'=> $getseller, 'cart'=> $cart]);
+              return view('product_details', ['product'=> $getproduct, 'seller'=> $getseller, 'cart'=> $cart, 'comments'=> $getcomment]);
             }
         }else {
           $products = $request->get('service');
