@@ -89,13 +89,29 @@ class cat_control extends Controller
          'discrib'=>'required',
          'amount'=>'required'
        ]);
-
+       $add_on_key = microtime()+ rand(0,100000000);
       $name="Prodoct_".md5("bereobong" . microtime()).".jpg";
       $prod_name = $request->input('product_name');
       $catigory = $request->input('procat_post');
       $subcatigory = $request->input('prosubcat_post');
       $discription = $request->input('discrib');
       $amount = $request->input('amount');
+      $add1_name = $request->input('add_1_name');
+      $add1_amount = $request->input('add_1_amount');
+      $add1_discrib = $request->input('add_1_discrib');
+      $add2_name = $request->input('add_2_name');
+      $add2_amount = $request->input('add_2_amount');
+      $add2_discrib = $request->input('add_2_discrib');
+      $add3_name = $request->input('add_3_name');
+      $add3_amount = $request->input('add_3_amount');
+      $add3_discrib = $request->input('add_3_discrib');
+      $add4_name = $request->input('add_4_name');
+      $add4_amount = $request->input('add_4_amount');
+      $add4_discrib = $request->input('add_4_discrib');
+      $add5_name = $request->input('add_5_name');
+      $add5_amount = $request->input('add_5_amount');
+      $add5_discrib = $request->input('add_5_discrib');
+
       if ($request->hasFile('pro_img')) {
         $request->file('pro_img');
         $request->pro_img->storeAs('public',$name);
@@ -110,7 +126,55 @@ class cat_control extends Controller
       $products->user_id = Auth::user()->id;
       $products->cat = $catigory;
       $products->sub_cat = $subcatigory;
+      $products->add_on = $add_on;
       $products->save();
+
+      if (!empty($add1_name)) {
+      $AddOn = new Add_On;
+      $AddOn->product_key = $add_on_key;
+      $AddOn->name = $add1_name;
+      $AddOn->Amount = $add1_amount;
+      $AddOn->discribtion = $add1_discrib;
+      $AddOn->save();
+
+      }
+      if (!empty($add2_name)) {
+      $AddOn = new Add_On;
+      $AddOn->product_key = $add_on_key;
+      $AddOn->name = $add2_name;
+      $AddOn->Amount = $add2_amount;
+      $AddOn->discribtion = $add2_discrib;
+      $AddOn->save();
+
+      }
+      if (!empty($add3_name)) {
+      $AddOn = new Add_On;
+      $AddOn->product_key = $add_on_key;
+      $AddOn->name = $add3_name;
+      $AddOn->Amount = $add3_amount;
+      $AddOn->discribtion = $add3_discrib;
+      $AddOn->save();
+
+      }
+      if (!empty($add4_name)) {
+      $AddOn = new Add_On;
+      $AddOn->product_key = $add_on_key;
+      $AddOn->name = $add4_name;
+      $AddOn->Amount = $add4_amount;
+      $AddOn->discribtion = $add4_discrib;
+      $AddOn->save();
+
+      }
+      if (!empty($add5_name)) {
+      $AddOn = new Add_On;
+      $AddOn->product_key = $add_on_key;
+      $AddOn->name = $add5_name;
+      $AddOn->Amount = $add5_amount;
+      $AddOn->discribtion = $add5_discrib;
+      $AddOn->save();
+
+      }
+
 
       return back()->with('product_info','product added socessfully');
 

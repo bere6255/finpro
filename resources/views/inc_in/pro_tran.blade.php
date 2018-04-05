@@ -6,7 +6,7 @@
                             @foreach($account->all() as $acc_bal)
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-success">N {{$acc_bal -> balance}}</h4>
+                                    <h4 class="card-title font-weight-normal text-success">₦ {{$acc_bal -> balance}}</h4>
                                     <p class="card-text">Available Balance</p>
                                 </div>
                             </div>
@@ -14,7 +14,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-info">N {{$acc_bal -> pot_balance}}</h4>
+                                    <h4 class="card-title font-weight-normal text-info">₦ {{$acc_bal -> pot_balance}}</h4>
                                     <p class="card-text ">Potential Balance</p>
                                 </div>
                             </div>
@@ -22,7 +22,7 @@
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-warning">N {{$acc_bal -> last_tran}}</h4>
+                                    <h4 class="card-title font-weight-normal text-warning">₦ {{$acc_bal -> last_tran}}</h4>
                                     <p class="card-text">Last Transaction</p>
                                 </div>
                             </div>
@@ -40,63 +40,99 @@
                     @endif
 
                     <div class="row ">
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h5 class="card-title mb-4">Order Hystory</h5>
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                          @if(count($trans_hys)>0)
+                                            @foreach($trans_hys->all() as $trans_hys)
+                                            <tr>
+                                                <td>{{$trans_hys -> order_id}}</td>
+                                                <td>{{$trans_hys -> amount}}</td>
+
+                                                <?php if ($trans_hys -> order_id=="Success"): ?>
+                                                    <td><span class="badge badge-success">Success</span></td>
+                                                <?php else: ?>
+                                                  <td><span class="badge badge-primary">Processing</span></td>
+                                                <?php endif; ?>
+                                                <?php if ($trans_hys -> order_id=="Failed"): ?>
+                                                  <td><span class="badge badge-danger">Failed</span></td>
+                                                <?php endif; ?>
+
+                                            </tr>
+                                            @endforeach
+                                            @endif
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
                                     <h5 class="card-title mb-4">Transaction Hystory</h5>
                                     <table class="table">
                                         <thead class="text-primary">
                                             <tr>
-                                                <th><i class="fa fa-user ml-2"></i></th>
-                                                <th>User</th>
-                                                <th>Item</th>
+                                                <th>Order ID</th>
+                                                <th>Amount</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
+
                                             <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-success">Success</span></td>
+                                                <td>{{$trans_hys -> order_id}}</td>
+                                                <td>{{$trans_hys -> amount}}</td>
+
+                                                <?php if ($trans_hys -> order_id=="Success"): ?>
+                                                    <td><span class="badge badge-success">Success</span></td>
+                                                <?php else: ?>
+                                                  <td><span class="badge badge-primary">Processing</span></td>
+                                                <?php endif; ?>
+                                                <?php if ($trans_hys -> order_id=="Failed"): ?>
+                                                  <td><span class="badge badge-danger">Failed</span></td>
+                                                <?php endif; ?>
+
                                             </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-danger">Failed</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-primary">Processing</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-success">Success</span></td>
-                                            </tr>
-                                            <tr>
-                                                <th><img src="images/profile.jpg" alt="profile" class="rounded-circle" width="40" height="40"></th>
-                                                <td>Larry</td>
-                                                <td>Acer</td>
-                                                <td><span class="badge badge-danger">Failed</span></td>
-                                            </tr>
+
                                         </tbody>
+
                                     </table>
                                 </div>
                             </div>
                         </div>
 
+
+
                     </div>
+
+
+
+
+
+
+
 
                     <?php if (Auth::user()->status=="seller"): ?>
 
                       <div class="row">
 
-                        <div class="col-lg-12  mb-4">
+                        <div class="col-lg-8  mb-4">
                           <div class="card">
                           <div class="card-block">
                               <h5 class="card-title mb-4">My Gigs</h5>
@@ -105,7 +141,7 @@
                                       <tr>
                                           <th>Name</th>
                                           <th>Discription</th>
-                                          <th>Amount</th>
+                                          <th>Amount ₦</th>
                                           <th><span class="badge badge-warning">Edite Post</span></th>
                                           <th><span class="badge badge-danger">Delite Post</span></th>
                                       </tr>
@@ -116,7 +152,7 @@
                                       <tr>
                                           <th>{{$git -> pro_name}}</th>
                                           <td>{{$git -> description}}</td>
-                                          <td>{{$git -> amount}}</td>
+                                          <td>₦ {{$git -> amount}}</td>
                                           <td><a href="/user/edite_post?edit={{$git->	id}}" class="btn btn-warning btn-sm">Edite Post</a></td>
                                           <td><a href="/user/delite_post?jes={{$git->	id}}" class="btn btn-danger btn-sm">Delite Post</a></td>
 
@@ -130,7 +166,7 @@
                       </div>
 
 
-                          <div class="col-lg-12  mb-4">
+                          <div class="col-lg-4  mb-4">
                               <div class="card">
                                 <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
                                       <h4 class="card-title  text-left mb-5 mt-4">Add Product</h4>
@@ -220,8 +256,8 @@
 
                                           <div class="form-group {{ $errors->has('amount') ? ' has-error' : '' }} ">
                                             <div class="input-group">
-                                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                              <input type="text" id="amount" name="amount" class="form-control p_input" placeholder="Enter amount for the service" required="true">
+                                              <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                              <input type="text" id="amount" name="amount" class="form-control p_input" placeholder="Enter Amount" required="true">
                                             </div>
                                             <div class="input-group">
                                               @if ($errors->has('amount'))
@@ -247,6 +283,28 @@
                                               @endif
                                             </div>
                                           </div>
+
+                                          <h4 class="card-title  text-left mb-5 mt-4">Add Requirement (optional)</h4>
+
+                                          <div class="form-group ">
+                                            <div class="input-group">
+                                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                              <input type="text" id="add_1_name" name="add_1_name" class="form-control p_input" placeholder="Enter Requirement name one">
+                                            </div>
+                                          </div>
+                                          <div class="form-group ">
+                                            <div class="input-group">
+                                              <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                              <input type="text" id="add_1_amount" name="add_1_amount" class="form-control p_input" placeholder="Enter Amount">
+                                            </div>
+                                          </div>
+                                          <div class="form-group ">
+                                              <label for="discrib"><b>Discribe Requirement</b></label>
+                                              <textarea id="add_1_discrib" name="add_1_discrib" class="form-control p-input" placeholder="tell about your product" rows="3"></textarea>
+                                          </div>
+
+
+
 
                                               <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> post your product</button>
 

@@ -23,11 +23,8 @@ class CreateProductsTable extends Migration
             $table->integer('user_id');
             $table->integer('cat');
             $table->integer('sub_cat');
-            $table->string('add1');
-            $table->string('add2');
-            $table->string('add3');
-            $table->string('add4');
-            $table->string('add5');
+            $table->string('add_on');
+
             $table->timestamps();
         });
     }

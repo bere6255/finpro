@@ -1,8 +1,8 @@
 
   <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
       <div class="bg-white text-center navbar-brand-wrapper">
-          <a class="navbar-brand brand-logo" href="/">Fist-Service</a>
-          <a class="navbar-brand brand-logo-mini" href="#">Fist</a>
+          <a class="navbar-brand brand-logo" href="/">Web-Service</a>
+          <a class="navbar-brand brand-logo-mini" href="#">WS</a>
 
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">

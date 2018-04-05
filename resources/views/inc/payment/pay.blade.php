@@ -1,18 +1,22 @@
+<div class="content-wrapper">
 <div class="row mb-2" >
 <div class="col-lg-6 mb-4">
     <div class="card">
         <div class="card-block">
           <div class="modal-body" style="padding:40px 50px;">
-            <h3 class="card-title text-primary text-left mb-5 mt-4">Pay</h3>
+            <h3 class="card-title text-primary text-left mb-5 mt-4">Confirmed Payment Details</h3>
             <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
       <div class="row" style="margin-bottom:40px;">
 
-          <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="text-center">
+                <img src="/Storage/webdonnig.jpg" class="rounded-circle" width="100" height="100">
+            </div>
             <p>
                 <div>
                     Payment for: {{$display_detsils[3]}}<br>
-                    E-mail: {{$display_detsils[0]}}
-                    Order ID: {{$display_detsils[1]}}
+                    E-mail: {{$display_detsils[0]}}<br>
+                    Order ID: {{$display_detsils[1]}}<br>
                     Amount: ₦ {{$display_detsils[2]}}
 
                 </div>
@@ -43,4 +47,5 @@
         </div>
     </div>
   </div>
+</div>
 </div>

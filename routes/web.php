@@ -38,7 +38,7 @@ Route::get('/profile', 'HomeController@loadprofile');
 Route::get('/becomeasaller', 'product_handiler@createsaler');
 Route::get('/seller', 'HomeController@loadprofile')->name('seller');
 Route::get('/dashboard', 'HomeController@loadprofile');
-Route::get('/order','product_handiler@order_product');
+Route::post('/order','product_handiler@order_product');
 Route::get('/comment_com','product_handiler@comment_post');
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 

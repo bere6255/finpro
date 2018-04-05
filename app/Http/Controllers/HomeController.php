@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Support\Facades\DB;
-use\App\account;
+use App\account;
 use App\cat;
 use App\products;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $product = products::inRandomOrder()->get();
+      $product = products::inRandomOrder()->limit(4)->get();
       $cart = cat::all();
       return view('home', ['cart'=> $cart, 'produc'=>$product]);
     }
@@ -68,10 +68,10 @@ class HomeController extends Controller
     $this->create_account($user['id']);
 
     $users_account = DB::table('accounts')->where('users_id', '=', $user['id'])->get();
-    $gits = DB::table('products')->where('user_id', '=', $user['id'])->get();
-
+    $gits = DB::table('products')->where('user_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
+    $traction_hystry = DB::table('orders')->where('bayers_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
       $cart = cat::all();
-      return view('sellers',['cart'=> $cart, 'account'=>$users_account, 'mygits'=>$gits]);
+      return view('sellers',['cart'=> $cart, 'trans_hys'=>$traction_hystry, 'account'=>$users_account, 'mygits'=>$gits]);
     }
 
     private function create_account($user){

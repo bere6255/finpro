@@ -10,7 +10,7 @@
                   </div>
                   <div class=" card clearfix">
                     <a href="/productdetails?service={{$product->id}}">  <h4 class="font-weight-bold txt-brand-color">{{$product->pro_name}}</h4></a>
-                    <h4 class="font-weight-normal text-success"><span class="pull-right">N {{$product->amount}}</span></h4>
+                    <h4 class="font-weight-normal text-success"><span class="pull-right">₦ {{$product->amount}}</span></h4>
                   </div>
                   <div class=" card clearfix">
                   <p>

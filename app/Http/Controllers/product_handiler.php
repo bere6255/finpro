@@ -41,9 +41,9 @@ class product_handiler extends Controller
       }
 
       $bayer= Auth::user();
-
+      $cart = cat::all();
       $prod_ordered = DB::table('products')->where('id', $product_id)->get();
-      $order_id =$bayer->id+ rand(0,100000000);
+      $order_id = $bayer->id+ rand(0,100000000);
 
       if ($prod_ordered[0]->user_id == $seller_id) {
         $order = new Order;
@@ -51,13 +51,13 @@ class product_handiler extends Controller
         $order->seller_id = $seller_id;
         $order->product_id = $product_id;
         $order->amount = $prod_ordered[0]->amount;
-        $order->status = "in progress";
+        $order->status = "Processing";
         $order->order_id = $order_id;
         $order->save();
 
         $order_detsils = array($bayer->email, $order_id, $prod_ordered[0]->amount*100, 1, );
         $dis_detsils = array($bayer->email, $order_id, $prod_ordered[0]->amount, $prod_ordered[0]->pro_name, );
-        return view ('pay')->with('trans', $order_detsils)->with('display_detsils', $dis_detsils);
+        return view ('pay')->with('trans', $order_detsils)->with('cart', $cart)->with('display_detsils', $dis_detsils);
       }
        return back();
 
@@ -80,8 +80,5 @@ class product_handiler extends Controller
        return back();
     }
 
-    public function pay(Request $request){
-        $product_id = $request->get('pr');
 
-    }
 }

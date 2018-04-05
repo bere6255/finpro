@@ -16,8 +16,42 @@
                       <p class="font-italic text-center mt-3">
                           {{$product->description}}
                       </p>
+                      <form method="POST" action="/order" accept-charset="UTF-8" class="form-horizontal" role="form">
+                          {{ csrf_field() }}
 
-                      <a href="/order?product_id={{$product->id}}&product_seller={{$product->user_id}}" class="btn btn-success float-right">Order {{$product->amount}}</a>
+
+                          <div class="card">
+                              <div class="card-block ">
+                                    <div class="panel panel-white post panel-shadow">
+                                        <div class="post-heading">
+
+                                            <div class="pull-left meta">
+                                              <div class="title h5 .float-sm-right">
+
+                                                </div>
+                                              </div>
+                                                <div class="title h5">
+                                                    <input type="checkbox" name="addon1" value="addon1"/><b>name of addon and </b>
+                                                    <p class="font-weight-bold txt-brand-color">₦ 1,000,000</p>
+                                                    <div>
+
+                                                    </div>
+                                                <h6 class="text-muted time">discribtion of addon</h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                          <input type="hidden" name="product_id" value="{{$product->id}}">
+                          <input type="hidden" name="product_seller" value="{{$product->user_id}}">
+                          <button class="btn btn-success btn-lg btn-block" type="submit">
+                          <i class="fa fa-plus-circle fa-lg"></i> Order Now! ₦ {{$product->amount}}
+                          </button>
+                      </form>
+
                       @endforeach
               @endif
             </div>
