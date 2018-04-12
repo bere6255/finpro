@@ -38,9 +38,9 @@ class HomeController extends Controller
             $getcomment = DB::table('comments')->where('product_id', '=', $cookie_value)->get();
           if (!empty($getproduct{0}->id)) {
             $getseller = DB::table('users')->where('id', '=', $getproduct[0]->user_id)->get();
-
+              $get_add_on = DB::select('select * from add__ons where product_key = ?', [$getproduct[0]->add_on]);
             $cart = cat::all();
-              return view('product_details', ['product'=> $getproduct, 'seller'=> $getseller, 'cart'=> $cart, 'comments'=> $getcomment]);
+              return view('product_details', ['product'=> $getproduct, 'seller'=> $getseller, 'cart'=> $cart, 'comments'=> $getcomment, 'adddd'=> $get_add_on]);
             }
         }else {
           $products = $request->get('service');

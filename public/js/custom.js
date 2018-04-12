@@ -86,3 +86,15 @@ function log_validateForm() {
                 return false;
               }
 }
+
+//$("input:checkbox:not(:checked)")
+function calculate_oder(){
+  if (document.getElementById("addon1").checked) {
+    var add_amount=document.getElementById("addon1").value;
+    alert(add_amount);
+  }else {
+    alert("am uncheck");
+  }
+
+
+}

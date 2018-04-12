@@ -15,10 +15,11 @@ class CreateAddOnsTable extends Migration
     {
         Schema::create('add__ons', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_key');
+            $table->string('product_key');
             $table->string('name');
             $table->integer('Amount');
             $table->string('discribtion');
+            $table->integer('number');
             $table->timestamps();
         });
     }

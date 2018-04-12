@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\cat;
+use DateTime;
 use Auth;
 use App\subcat;
+use App\Add_On;
 use App\products;
 class cat_control extends Controller
 {
@@ -89,7 +91,8 @@ class cat_control extends Controller
          'discrib'=>'required',
          'amount'=>'required'
        ]);
-       $add_on_key = microtime()+ rand(0,100000000);
+       $now = new DateTime();
+       $add_on_key = microtime().rand(0,100000000);
       $name="Prodoct_".md5("bereobong" . microtime()).".jpg";
       $prod_name = $request->input('product_name');
       $catigory = $request->input('procat_post');
@@ -126,53 +129,36 @@ class cat_control extends Controller
       $products->user_id = Auth::user()->id;
       $products->cat = $catigory;
       $products->sub_cat = $subcatigory;
-      $products->add_on = $add_on;
+      $products->add_on = $add_on_key;
       $products->save();
 
       if (!empty($add1_name)) {
-      $AddOn = new Add_On;
-      $AddOn->product_key = $add_on_key;
-      $AddOn->name = $add1_name;
-      $AddOn->Amount = $add1_amount;
-      $AddOn->discribtion = $add1_discrib;
-      $AddOn->save();
-
+      DB::table('add__ons')->insert([
+    ['product_key' => $add_on_key, 'name' => $add1_name, 'Amount' => $add1_amount, 'discribtion' => $add1_discrib,'number' => 1, 'created_at' => $now, 'updated_at' => $now]
+]);
       }
+
       if (!empty($add2_name)) {
-      $AddOn = new Add_On;
-      $AddOn->product_key = $add_on_key;
-      $AddOn->name = $add2_name;
-      $AddOn->Amount = $add2_amount;
-      $AddOn->discribtion = $add2_discrib;
-      $AddOn->save();
-
+        DB::table('add__ons')->insert([
+      ['product_key' => $add_on_key, 'name' => $add2_name, 'Amount' => $add2_amount, 'discribtion' => $add2_discrib,'number' => 2, 'created_at' => $now, 'updated_at' => $now]
+  ]);
       }
-      if (!empty($add3_name)) {
-      $AddOn = new Add_On;
-      $AddOn->product_key = $add_on_key;
-      $AddOn->name = $add3_name;
-      $AddOn->Amount = $add3_amount;
-      $AddOn->discribtion = $add3_discrib;
-      $AddOn->save();
 
+      if (!empty($add3_name)) {
+        DB::table('add__ons')->insert([
+      ['product_key' => $add_on_key, 'name' => $add3_name, 'Amount' => $add3_amount, 'discribtion' => $add3_discrib,'number' => 3, 'created_at' => $now, 'updated_at' => $now]
+  ]);
       }
       if (!empty($add4_name)) {
-      $AddOn = new Add_On;
-      $AddOn->product_key = $add_on_key;
-      $AddOn->name = $add4_name;
-      $AddOn->Amount = $add4_amount;
-      $AddOn->discribtion = $add4_discrib;
-      $AddOn->save();
-
+        DB::table('add__ons')->insert([
+      ['product_key' => $add_on_key, 'name' => $add4_name, 'Amount' => $add4_amount, 'discribtion' => $add4_discrib, 'number' => 4, 'created_at' => $now, 'updated_at' => $now]
+  ]);
       }
       if (!empty($add5_name)) {
-      $AddOn = new Add_On;
-      $AddOn->product_key = $add_on_key;
-      $AddOn->name = $add5_name;
-      $AddOn->Amount = $add5_amount;
-      $AddOn->discribtion = $add5_discrib;
-      $AddOn->save();
 
+        DB::table('add__ons')->insert([
+      ['product_key' => $add_on_key, 'name' => $add5_name, 'Amount' => $add5_amount, 'discribtion' => $add5_discrib,'number' => 5, 'created_at' => $now, 'updated_at' => $now]
+  ]);
       }
 
 
@@ -180,10 +166,8 @@ class cat_control extends Controller
 
     }
 
-// using numail sql query
-// $user = DB::select('select * from user where active =?',[1]);
-//Storage::url($cart->image_url)
-//$file = $event->attachments->where('path', $attachmentPath)->first();
+
+
     public function catigory(){
       $cart = cat::all();
       return view('catigory', ['cart'=> $cart]);

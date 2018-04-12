@@ -11,14 +11,16 @@
                           <img src="{{Storage::url($product->image_url)}}"  width="100%" height="50%S">
                       </div>
                       <div class="text-center mt-3">
-                          <h3 class="font-weight-bold txt-brand-color">{{$product->pro_name}}</h3>
+                          <h3 class="font-weight-bold txt-brand-color">{{$product->pro_name}}</h3><br>
+                          <h3 class="font-weight-bold btn-danger"> ₦ {{$product->amount}}</h3>
                       </div>
                       <p class="font-italic text-center mt-3">
                           {{$product->description}}
                       </p>
-                      <form method="POST" action="/order" accept-charset="UTF-8" class="form-horizontal" role="form">
+                      <form method="POST" action="/chieckout" accept-charset="UTF-8" class="form-horizontal" role="form">
                           {{ csrf_field() }}
-
+                          @if(count($adddd)>0)
+                                @foreach($adddd as $ad)
 
                           <div class="card">
                               <div class="card-block ">
@@ -31,12 +33,12 @@
                                                 </div>
                                               </div>
                                                 <div class="title h5">
-                                                    <input type="checkbox" name="addon1" value="addon1"/><b>name of addon and </b>
-                                                    <p class="font-weight-bold txt-brand-color">₦ 1,000,000</p>
+                                                    <input type="checkbox"onclick="calculate_oder()" id="serv_add{{$ad->number}}" name="serv_add{{$ad->number}}" value="{{$ad->id}}"/><b>{{$ad->name}} </b>
+                                                    <b class="font-weight-bold txt-brand-color">₦ {{$ad->Amount}}</b>
                                                     <div>
 
                                                     </div>
-                                                <h6 class="text-muted time">discribtion of addon</h6>
+                                                <h6 class="text-muted time">{{$ad->discribtion}}</h6>
                                             </div>
                                         </div>
 
@@ -44,11 +46,12 @@
                                   </div>
                                 </div>
 
-
+                                @endforeach
+                        @endif
                           <input type="hidden" name="product_id" value="{{$product->id}}">
                           <input type="hidden" name="product_seller" value="{{$product->user_id}}">
                           <button class="btn btn-success btn-lg btn-block" type="submit">
-                          <i class="fa fa-plus-circle fa-lg"></i> Order Now! ₦ {{$product->amount}}
+                          <i class="fa fa-plus-circle fa-lg"></i> Order Now!
                           </button>
                       </form>
 

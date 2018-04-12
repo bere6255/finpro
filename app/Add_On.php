@@ -12,7 +12,7 @@ class Add_On extends Model
    * @var array
    */
   protected $fillable = [
-      'product_key', 'name_1','Amount','discribtion', 'name_2','Amount','discribtion', 'name_3','Amount','discribtion', 'name_4','Amount','discribtion', 'name_5','Amount','discribtion'
+      'product_key', 'name','Amount','discribtion', 'number','created_at','updated_at'
   ];
 
   /**

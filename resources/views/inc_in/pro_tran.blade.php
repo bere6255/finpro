@@ -43,7 +43,7 @@
                         <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h5 class="card-title mb-4">Order Hystory</h5>
+                                    <h5 class="card-title mb-4">Order History</h5>
                                     <table class="table">
                                         <thead class="text-primary">
                                             <tr>
@@ -83,7 +83,7 @@
                         <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h5 class="card-title mb-4">Transaction Hystory</h5>
+                                    <h5 class="card-title mb-4">Transaction History</h5>
                                     <table class="table">
                                         <thead class="text-primary">
                                             <tr>
@@ -169,7 +169,7 @@
                           <div class="col-lg-4  mb-4">
                               <div class="card">
                                 <div class="card-block"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                      <h4 class="card-title  text-left mb-5 mt-4">Add Product</h4>
+                                      <h4 class="card-title  text-left mb-5 mt-4">Post A Git</h4>
                                       @if (session('product_info'))
                                           <span class="btn btn-success">
                                               <strong>{{ session('product_info') }}</strong>
@@ -181,7 +181,7 @@
 
                                           <div class="form-group {{ $errors->has('product_name') ? ' has-error' : '' }} ">
                                             <div class="input-group">
-                                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                              <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                                               <input type="text" id="product_name" name="product_name" class="form-control p_input" placeholder="Enter product name" required="true">
                                             </div>
                                             <div class="input-group">
@@ -197,7 +197,7 @@
 
                                           <div class="form-group {{ $errors->has('procat_post') ? ' has-error' : '' }} ">
                                             <div class="input-group">
-                                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                              <span class="input-group-addon"><i class="fa fa-navicon"></i></span>
                                               <select id="procat_post" onchange="ajax_post();" name="procat_post" class="form-control" >
                                                 <option value="">please select catigory</option>
                                                 @if(count($cart)>0)
@@ -220,7 +220,7 @@
 
                                           <div class="form-group {{ $errors->has('prosubcat') ? ' has-error' : '' }} ">
                                             <div class="input-group">
-                                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                              <span class="input-group-addon"><i class="fa fa-minus"></i></span>
                                               <div id="retriv_post" class="input-group">
                                               <select id="prosubcat_post" name="prosubcat_post" class="form-control">
 
@@ -286,22 +286,177 @@
 
                                           <h4 class="card-title  text-left mb-5 mt-4">Add Requirement (optional)</h4>
 
-                                          <div class="form-group ">
-                                            <div class="input-group">
-                                              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                              <input type="text" id="add_1_name" name="add_1_name" class="form-control p_input" placeholder="Enter Requirement name one">
-                                            </div>
+
+
+                                          <li class="nav-item">
+                                          <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                              <!-- <i class="fa fa-address-book"></i> -->
+                                              <span class="menu-title">click to Add<i class="fa fa-sort-down"></i></span>
+                                          </a>
+                                          <div class="collapse" id="collapseExample">
+                                              <ul class="nav flex-column sub-menu">
+                                                  <li class="nav-item">
+                                                    <h5 class="card-title  text-left mb-5 mt-4">Add one</h5>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                        <input type="text" id="add_1_name" name="add_1_name" class="form-control p_input" placeholder="Enter Requirement name one">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <input type="text" id="add_1_amount" name="add_1_amount" class="form-control p_input" placeholder="Enter Amount">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label for="discrib"><b>Discribe Requirement</b></label>
+                                                        <textarea id="add_1_discrib" name="add_1_discrib" class="form-control p-input" placeholder="tell about your Requirement" rows="3"></textarea>
+                                                    </div>
+                                                  </a>
+                                                  </li>
+                                              </ul>
                                           </div>
-                                          <div class="form-group ">
-                                            <div class="input-group">
-                                              <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                              <input type="text" id="add_1_amount" name="add_1_amount" class="form-control p_input" placeholder="Enter Amount">
-                                            </div>
+                                      </li>
+
+
+
+                                          <li class="nav-item">
+                                          <a class="nav-link" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                                              <!-- <i class="fa fa-address-book"></i> -->
+                                              <span class="menu-title">click to Add<i class="fa fa-sort-down"></i></span>
+                                          </a>
+                                          <div class="collapse" id="collapseExample2">
+                                              <ul class="nav flex-column sub-menu">
+                                                  <li class="nav-item">
+                                                    <h5 class="card-title  text-left mb-5 mt-4">Add two</h5>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                        <input type="text" id="add_2_name" name="add_2_name" class="form-control p_input" placeholder="Enter Requirement name two">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <input type="text" id="add_2_amount" name="add_2_amount" class="form-control p_input" placeholder="Enter Amount">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label for="discrib"><b>Discribe Requirement</b></label>
+                                                        <textarea id="add_2_discrib" name="add_2_discrib" class="form-control p-input" placeholder="tell about your Requirement" rows="3"></textarea>
+                                                    </div>
+                                                  </a>
+                                                  </li>
+                                              </ul>
                                           </div>
-                                          <div class="form-group ">
-                                              <label for="discrib"><b>Discribe Requirement</b></label>
-                                              <textarea id="add_1_discrib" name="add_1_discrib" class="form-control p-input" placeholder="tell about your product" rows="3"></textarea>
+                                      </li>
+
+
+
+
+                                          <li class="nav-item">
+                                          <a class="nav-link" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                                              <!-- <i class="fa fa-address-book"></i> -->
+                                              <span class="menu-title">click to Add<i class="fa fa-sort-down"></i></span>
+                                          </a>
+                                          <div class="collapse" id="collapseExample3">
+                                              <ul class="nav flex-column sub-menu">
+                                                  <li class="nav-item">
+                                                    <h5 class="card-title  text-left mb-5 mt-4">Add three</h5>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                        <input type="text" id="add_3_name" name="add_3_name" class="form-control p_input" placeholder="Enter Requirement name three">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <input type="text" id="add_3_amount" name="add_3_amount" class="form-control p_input" placeholder="Enter Amount">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label for="discrib"><b>Discribe Requirement</b></label>
+                                                        <textarea id="add_3_discrib" name="add_3_discrib" class="form-control p-input" placeholder="tell about your Requirement" rows="3"></textarea>
+                                                    </div>
+                                                  </a>
+                                                  </li>
+                                              </ul>
                                           </div>
+                                      </li>
+
+
+
+
+
+                                          <li class="nav-item">
+                                          <a class="nav-link" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+                                              <!-- <i class="fa fa-address-book"></i> -->
+                                              <span class="menu-title">click to Add<i class="fa fa-sort-down"></i></span>
+                                          </a>
+                                          <div class="collapse" id="collapseExample4">
+                                              <ul class="nav flex-column sub-menu">
+                                                  <li class="nav-item">
+                                                    <h5 class="card-title  text-left mb-5 mt-4">Add four</h5>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                        <input type="text" id="add_4_name" name="add_4_name" class="form-control p_input" placeholder="Enter Requirement name four">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <input type="text" id="add_4_amount" name="add_4_amount" class="form-control p_input" placeholder="Enter Amount">
+                                                      </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <label for="discrib"><b>Discribe Requirement</b></label>
+                                                        <textarea id="add_4_discrib" name="add_4_discrib" class="form-control p-input" placeholder="tell about your Requirement" rows="3"></textarea>
+                                                    </div>
+                                                  </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </li>
+
+
+
+
+
+
+
+                            <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
+                                <!-- <i class="fa fa-address-book"></i> -->
+                                <span class="menu-title">click to Add<i class="fa fa-sort-down"></i></span>
+                            </a>
+                            <div class="collapse" id="collapseExample5">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                      <h5 class="card-title  text-left mb-5 mt-4">Add five</h5>
+                                      <div class="form-group ">
+                                        <div class="input-group">
+                                          <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                          <input type="text" id="add_5_name" name="add_5_name" class="form-control p_input" placeholder="Enter Requirement name five">
+                                        </div>
+                                      </div>
+                                      <div class="form-group ">
+                                        <div class="input-group">
+                                          <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                          <input type="text" id="add_5_amount" name="add_5_amount" class="form-control p_input" placeholder="Enter Amount">
+                                        </div>
+                                      </div>
+                                      <div class="form-group ">
+                                          <label for="discrib"><b>Discribe Requirement</b></label>
+                                          <textarea id="add_5_discrib" name="add_5_discrib" class="form-control p-input" placeholder="tell about your Requirement" rows="3"></textarea>
+                                      </div>
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
 
 
 
