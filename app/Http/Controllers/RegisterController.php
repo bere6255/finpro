@@ -27,6 +27,15 @@ class RegisterController extends Controller
      return redirect('/main');
   }
 
+  public function activate_account(){
+      $cart = cat::all();
+      $messag = "please check your supplied E-mail to activate your account";
+      $messag2 = " After 15m you will have to start your Order over again thanks";
+    return view ('account_Acti', ['cart'=> $cart, 'activ'=>$messag, 'activ2'=>$messag2]);
+
+
+  }
+
   public function loadupdate(){
     if (Auth::guest()) {
         return redirect('/');

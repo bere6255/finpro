@@ -1,6 +1,8 @@
-<div class="row mb-2" >
-<div class="col-lg-6 mb-4">
-    <div class="card">
+<div class="container-scroller">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="content-wrapper full-page-wrapper d-flex align-items-center">
+          <div class="card col-lg-4 offset-lg-4"
         <div class="card-block">
           <div class="modal-body" style="padding:40px 50px;">
             <h3 class="card-title text-primary text-left mb-5 mt-4">Register</h3>

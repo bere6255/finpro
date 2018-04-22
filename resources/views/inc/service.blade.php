@@ -35,9 +35,7 @@
                                                 <div class="title h5">
                                                     <input type="checkbox"onclick="calculate_oder()" id="serv_add{{$ad->number}}" name="serv_add{{$ad->number}}" value="{{$ad->id}}"/><b>{{$ad->name}} </b>
                                                     <b class="font-weight-bold txt-brand-color">₦ {{$ad->Amount}}</b>
-                                                    <div>
 
-                                                    </div>
                                                 <h6 class="text-muted time">{{$ad->discribtion}}</h6>
                                             </div>
                                         </div>

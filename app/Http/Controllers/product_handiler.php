@@ -44,26 +44,30 @@ class product_handiler extends Controller
           return redirect('/login')->Cookie('product', $product_id, 10);
       }
 
-      $bayer= Auth::user();
-      $cart = cat::all();
-      $prod_ordered = DB::table('products')->where('id', $product_id)->get();
-      $order_id = $bayer->id+ rand(0,100000000);
+      if (Auth::user()->activation=="activated") {
 
-      if ($prod_ordered[0]->user_id == $seller_id) {
-        $order = new Order;
-        $order->bayers_id = $bayer->id;
-        $order->seller_id = $seller_id;
-        $order->product_id = $product_id;
-        $order->amount = $total;
-        $order->status = "Processing";
-        $order->order_id = $order_id;
-        $order->save();
+              $bayer= Auth::user();
+              $cart = cat::all();
+              $prod_ordered = DB::table('products')->where('id', $product_id)->get();
+              $order_id = $bayer->id+ rand(0,100000000);
 
-        $order_detsils = array($bayer->email, $order_id, $total*100, 1, );
-        $dis_detsils = array($bayer->email, $order_id, $total, $prod_ordered[0]->pro_name, );
-        return view ('pay')->with('trans', $order_detsils)->with('cart', $cart)->with('display_detsils', $dis_detsils);
+              if ($prod_ordered[0]->user_id == $seller_id) {
+                $order = new Order;
+                $order->bayers_id = $bayer->id;
+                $order->seller_id = $seller_id;
+                $order->product_id = $product_id;
+                $order->amount = $total;
+                $order->status = "Processing";
+                $order->order_id = $order_id;
+                $order->save();
+
+                $order_detsils = array($bayer->email, $order_id, $total*100, 1, );
+                $dis_detsils = array($bayer->email, $order_id, $total, $prod_ordered[0]->pro_name, );
+                return view ('pay')->with('trans', $order_detsils)->with('cart', $cart)->with('display_detsils', $dis_detsils);
+              }
       }
-       return back();
+
+       return redirect ('/account_Acti')->Cookie('product', $product_id, 15);
 
     }
 
@@ -118,7 +122,7 @@ class product_handiler extends Controller
           }
 
         $cart = cat::all();
-          return view('summary', ['cart'=> $cart, 'product'=> $getproduct, 'summary'=> $final_sum, 'seller'=> $getseller, 'add1'=> $addon1, 'add2'=> $addon2, 'add3'=> $addon3, 'add4'=> $addon4, 'add5'=> $addon5]);
+          return view('summary', ['cart'=> $cart, 'product'=> $getproduct, 'summary'=> $final_sum, 'seller'=> $getseller, 'add1'=> $addon1, 'add2'=> $addon2, 'add3'=> $addon3, 'add4'=> $addon4, 'add5'=> $addon5, 'activ'=>""]);
       }
 return back();
     }

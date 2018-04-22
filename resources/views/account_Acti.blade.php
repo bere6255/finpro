@@ -8,6 +8,6 @@
 @section('sideber')
   @include('inc_in.das_sidber')
 @endsection
-@section('content')
-  @include('inc_in.pro_tran')
+@section('product')
+  @include('inc.activ')
 @endsection

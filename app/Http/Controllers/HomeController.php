@@ -71,7 +71,7 @@ class HomeController extends Controller
     $gits = DB::table('products')->where('user_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
     $traction_hystry = DB::table('orders')->where('bayers_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
       $cart = cat::all();
-      return view('sellers',['cart'=> $cart, 'trans_hys'=>$traction_hystry, 'account'=>$users_account, 'mygits'=>$gits]);
+      return view('profile',['cart'=> $cart, 'trans_hys'=>$traction_hystry, 'account'=>$users_account, 'mygits'=>$gits]);
     }
 
     private function create_account($user){

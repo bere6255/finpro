@@ -9,6 +9,13 @@
                       <form method="POST" action="/order" accept-charset="UTF-8" class="form-horizontal" role="form">
                           {{ csrf_field() }}
                                <h5 class="card-title mb-4">Order Summary</h5>
+                               @if (count($activ)>0)
+                                   <?php if (!$activ==""){ ?>
+                                     <span class="btn btn-danger">
+                                         <strong><b>{{ $activ}}</b></strong>
+                                     </span>
+                                   <?php } ?>
+                               @endif
                                <div class="table-responsive">
                                    <table class="table">
                                        <thead>
