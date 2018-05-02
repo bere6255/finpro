@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaraWorks\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use\App\products;
-use\App\account;
-use\App\comment;
-use\App\Add_On;
-use\App\Order;
+use\DaraWorks\products;
+use\DaraWorks\account;
+use\DaraWorks\comment;
+use\DaraWorks\Add_On;
+use\DaraWorks\Order;
 use Auth;
-use App\cat;
+use DaraWorks\cat;
 use Illuminate\Http\Request;
 
 class product_handiler extends Controller

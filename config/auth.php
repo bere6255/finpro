@@ -87,7 +87,7 @@ return [
 
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => DaraWorks\User::class,
         ],
 
         // 'users' => [

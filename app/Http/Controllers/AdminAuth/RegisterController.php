@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\AdminAuth;
+namespace DaraWorks\Http\Controllers\AdminAuth;
 
-use App\Admin;
+use DaraWorks\Admin;
 use Validator;
-use App\Http\Controllers\Controller;
+use DaraWorks\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 

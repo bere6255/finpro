@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-use\App\products;
-use App\cat;
+namespace DaraWorks\Http\Controllers;
+use\DaraWorks\products;
+use DaraWorks\cat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 

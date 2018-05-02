@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaraWorks\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\cat;
+use DaraWorks\cat;
+use Mail;
 use Auth;
-use App\User;
+use DaraWorks\User;
 class RegisterController extends Controller
 {
 
@@ -33,6 +34,9 @@ class RegisterController extends Controller
       $messag2 = " After 15m you will have to start your Order over again thanks";
     return view ('account_Acti', ['cart'=> $cart, 'activ'=>$messag, 'activ2'=>$messag2]);
 
+
+  }
+  public function activete_account(){
 
   }
 
@@ -75,6 +79,9 @@ class RegisterController extends Controller
          'email'=> 'required|unique:users',
          'passwordreg'=>'required|confirmed'
        ]);
+
+       $validate_mail =bcrypt($request->input('email'));
+       $ac_mail = $request->input('email');
        //creating the user
          //$user = User::create($request, ['reg_usrname', 'reg_mail', 'reg_psw'] );
        $user=new User;
@@ -84,8 +91,20 @@ class RegisterController extends Controller
        $user->status = "bayer";
        $user->level = 0;
        $user->img_url = "defaut_priflepicture.jpg";
+       $user->activation = $validate_mail;
        $user->save();
+       $val_mail = array(
+         'reg_mail' => $request->input('email'),
+         'validate_mail' => $validate_mail, );
+         Mail::send('mail.validate', $val_mail, function ($message) use ($ac_mail)
+          {
+            $message->from('info.daraworks.com', 'DaraWorks.LTD');
+            $message->sender('info.daraworks.com', 'DaraWorks.LTD');
+            $message->to($ac_mail, $name = null);
+            $message->replyTo('no-reply@daraworks.com', 'DaraWorks.LTD');
+            $message->subject('Activate your acount to continue order');
 
+          });
          // autor sign
          auth()->login($user);
 

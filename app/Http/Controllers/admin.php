@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\cat;
-use App\subcat;
+namespace DaraWorks\Http\Controllers;
+use DaraWorks\cat;
+use DaraWorks\subcat;
 use Illuminate\Http\Request;
 
 class admin extends Controller

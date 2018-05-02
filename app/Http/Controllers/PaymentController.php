@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaraWorks\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use DaraWorks\Http\Requests;
+use DaraWorks\Http\Controllers\Controller;
 use Paystack;
 
 class PaymentController extends Controller

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\BaodAuth;
+namespace DaraWorks\Http\Controllers\BaodAuth;
 
-use App\Http\Controllers\Controller;
+use DaraWorks\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
 

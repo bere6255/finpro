@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaraWorks\Http\Controllers;
 use Auth;
 use Illuminate\Support\Facades\DB;
-use App\account;
-use App\cat;
-use App\products;
+use DaraWorks\account;
+use DaraWorks\cat;
+use DaraWorks\products;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

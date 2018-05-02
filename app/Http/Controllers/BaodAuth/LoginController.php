@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\BaodAuth;
+namespace DaraWorks\Http\Controllers\BaodAuth;
 
-use App\Http\Controllers\Controller;
+use DaraWorks\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Hesto\MultiAuth\Traits\LogsoutGuard;

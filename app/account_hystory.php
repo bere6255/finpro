@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace DaraWorks;
 
 use Illuminate\Database\Eloquent\Model;
 

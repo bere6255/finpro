@@ -16,6 +16,7 @@ Route::post('/login', 'RegisterController@Login');
 Route::post('/login_main', 'RegisterController@login_main');
 Route::post('/register', 'RegisterController@register');
 Route::get('/register', 'RegisterController@load');
+Route::get('/ac_val', 'RegisterController@activete_account');
 Route::get('//account_Acti', 'RegisterController@activate_account');
 Route::get('/update', 'RegisterController@loadupdate');
 Route::post('/update_pro', 'RegisterController@updateuser');

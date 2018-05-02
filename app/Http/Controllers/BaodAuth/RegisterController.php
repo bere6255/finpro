@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\BaodAuth;
+namespace DaraWorks\Http\Controllers\BaodAuth;
 
-use App\Baod;
+use DaraWorks\Baod;
 use Validator;
-use App\Http\Controllers\Controller;
+use DaraWorks\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 

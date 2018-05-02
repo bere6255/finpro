@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace DaraWorks;
 
-use App\Notifications\AdminResetPassword;
+use DaraWorks\Notifications\AdminResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace DaraWorks;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname', 'email', 'password','status'
+        'fullname', 'email', 'password','status','activation'
     ];
 
     /**

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaraWorks\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use App\cat;
+use DaraWorks\cat;
 use DateTime;
 use Auth;
-use App\subcat;
-use App\Add_On;
-use App\products;
+use DaraWorks\subcat;
+use DaraWorks\Add_On;
+use DaraWorks\products;
 class cat_control extends Controller
 {
 

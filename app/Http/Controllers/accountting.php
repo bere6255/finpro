@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace DaraWorks\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
-use App\cat;
+use DaraWorks\cat;
 class accountting extends Controller
 {
   /*

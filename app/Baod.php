@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace DaraWorks;
 
-use App\Notifications\BaodResetPassword;
+use DaraWorks\Notifications\BaodResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

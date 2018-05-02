@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\cat;
+namespace DaraWorks\Http\Controllers;
+use DaraWorks\cat;
 use Illuminate\Http\Request;
 
 class setup extends Controller
