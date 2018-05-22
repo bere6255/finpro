@@ -69,9 +69,11 @@ class HomeController extends Controller
 
     $users_account = DB::table('accounts')->where('users_id', '=', $user['id'])->get();
     $gits = DB::table('products')->where('user_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
-    $traction_hystry = DB::table('orders')->where('bayers_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
+    $order_hystry = DB::table('orders')->where('bayers_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
+    $sells = DB::table('sells')->where('users_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
+    $tran_hystry = DB::table('account_hystories')->where('users_id', '=', $user['id'])->offset(0)->limit(10)->latest()->get();
       $cart = cat::all();
-      return view('profile',['cart'=> $cart, 'trans_hys'=>$traction_hystry, 'account'=>$users_account, 'mygits'=>$gits]);
+      return view('profile',['cart'=> $cart, 'oder_hys'=>$order_hystry, 'account'=>$users_account, 'mygits'=>$gits, 'trans_hys'=>$tran_hystry, 'sells'=>$sells]);
     }
 
     private function create_account($user){

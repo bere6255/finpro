@@ -1,11 +1,10 @@
 
-               <div class="row mb-2">
-                   <div class="col-lg-12">
-                       <div class="card mb-4">
+
+                   <div class="row col-lg-12 text-center">
+
                            <div class="card-block">
-                               <h5 class="card-title mb-1">get the best from Web-services</h5>
+                               <h3 class="card-title mb-1">Get the best from Dara Works pick a Catigory</h3>
 
                            </div>
-                       </div>
+
                    </div>
-               </div>

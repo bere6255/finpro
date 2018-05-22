@@ -4,7 +4,7 @@ namespace DaraWorks;
 
 use Illuminate\Database\Eloquent\Model;
 
-class account_hystory extends Model
+class sells extends Model
 {
   /**
    * The attributes that are mass assignable.
@@ -12,6 +12,6 @@ class account_hystory extends Model
    * @var array
    */
   protected $fillable = [
-      'users_id', 'name','status','amount'
+      'users_id', 'bayers_id','amount','status','order_id'
   ];
 }

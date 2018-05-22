@@ -39,13 +39,35 @@ class product_handiler extends Controller
       $product_id =$request->get('product_id');
       $seller_id = $request->get('product_seller');
       $total = $request->get('total');
+      $add_1 = $request->get('add1');
+      $add_2 = $request->get('add2');
+      $add_3 = $request->get('add3');
+      $add_4 = $request->get('add4');
+      $add_5 = $request->get('dd5');
+      if (empty($request->get('add_1'))) {
+        $add_1=0;
+      }
+      if (empty($request->get('add_2'))) {
+        $add_2=0;
+      }
+      if (empty($request->get('add_3'))) {
+        $add_3=0;
+      }
+      if (empty($request->get('add_4'))) {
+        $add_4=0;
+      }
+      if (empty($request->get('add_5'))) {
+        $add_5=0;
+      }
       if (Auth::guest()) {
         // remember order write to session product_id
-          return redirect('/login')->Cookie('product', $product_id, 10);
+          return redirect('/login')->Cookie('product', $product_id, 3);
       }
+      //////////////////////////////////////////
+      /////////////////////////////////////////
+      /////////////////////////////////////////``
 
       if (Auth::user()->activation=="activated") {
-
               $bayer= Auth::user();
               $cart = cat::all();
               $prod_ordered = DB::table('products')->where('id', $product_id)->get();
@@ -59,15 +81,20 @@ class product_handiler extends Controller
                 $order->amount = $total;
                 $order->status = "Processing";
                 $order->order_id = $order_id;
+                $order->add_1 = $add_1;
+                $order->add_2 = $add_2;
+                $order->add_3 = $add_3;
+                $order->add_4 = $add_4;
+                $order->add_5 = $add_5;
                 $order->save();
-
-                $order_detsils = array($bayer->email, $order_id, $total*100, 1, );
-                $dis_detsils = array($bayer->email, $order_id, $total, $prod_ordered[0]->pro_name, );
-                return view ('pay')->with('trans', $order_detsils)->with('cart', $cart)->with('display_detsils', $dis_detsils);
+                $order_table_id = $order_id;
+                $order_details = array($bayer->email, $order_id, $total*100, 1,$order_table_id,$seller_id );
+                $dis_details = array($bayer->email, $order_id, $total, $prod_ordered[0]->pro_name, );
+                return view ('pay')->with('trans', $order_details)->with('cart', $cart)->with('display_detsils', $dis_details);
               }
       }
 
-       return redirect ('/account_Acti')->Cookie('product', $product_id, 15);
+       return redirect ('/account_Acti')->Cookie('product', $product_id, 10);
 
     }
 

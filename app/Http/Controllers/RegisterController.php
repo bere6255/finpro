@@ -98,8 +98,8 @@ class RegisterController extends Controller
          'validate_mail' => $validate_mail, );
          Mail::send('mail.validate', $val_mail, function ($message) use ($ac_mail)
           {
-            $message->from('info.daraworks.com', 'DaraWorks.LTD');
-            $message->sender('info.daraworks.com', 'DaraWorks.LTD');
+            $message->from('info@daraworks.com', 'DaraWorks.LTD');
+            $message->sender('info@DaraWorks.com', 'DaraWorks.LTD');
             $message->to($ac_mail, $name = null);
             $message->replyTo('no-reply@daraworks.com', 'DaraWorks.LTD');
             $message->subject('Activate your acount to continue order');

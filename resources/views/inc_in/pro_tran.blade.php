@@ -6,7 +6,11 @@
                             @foreach($account->all() as $acc_bal)
                             <div class="card">
                                 <div class="card-block">
+                                  @if($acc_bal -> balance>1000)
                                     <h4 class="card-title font-weight-normal text-success">₦ {{$acc_bal -> balance}}</h4>
+                                    @else
+                                    <h4 class="card-title font-weight-normal text-danger">₦ {{$acc_bal -> balance}}</h4>
+                                  @endif
                                     <p class="card-text">Available Balance</p>
                                 </div>
                             </div>
@@ -43,7 +47,7 @@
                         <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h5 class="card-title mb-4">Order History</h5>
+                                    <h5 class="card-title mb-4"><a href="/order_hystry">Order History</a></h5>
                                     <table class="table">
                                         <thead class="text-primary">
                                             <tr>
@@ -54,18 +58,18 @@
                                         </thead>
 
                                         <tbody>
-                                          @if(count($trans_hys)>0)
-                                            @foreach($trans_hys->all() as $trans_hys)
+                                          @if(count($oder_hys)>0)
+                                            @foreach($oder_hys->all() as $oder_hys)
                                             <tr>
-                                                <td>{{$trans_hys -> order_id}}</td>
-                                                <td>{{$trans_hys -> amount}}</td>
+                                                <td>{{$oder_hys -> order_id}}</td>
+                                                <td>{{$oder_hys -> amount}}</td>
 
-                                                <?php if ($trans_hys -> order_id=="Success"): ?>
-                                                    <td><span class="badge badge-success">Success</span></td>
+                                                <?php if ($oder_hys -> status=="successful"): ?>
+                                                    <td><span class="badge badge-success">Successful</span></td>
                                                 <?php else: ?>
                                                   <td><span class="badge badge-primary">Processing</span></td>
                                                 <?php endif; ?>
-                                                <?php if ($trans_hys -> order_id=="Failed"): ?>
+                                                <?php if ($oder_hys -> status=="Failed"): ?>
                                                   <td><span class="badge badge-danger">Failed</span></td>
                                                 <?php endif; ?>
 
@@ -83,7 +87,7 @@
                         <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
-                                    <h5 class="card-title mb-4">Transaction History</h5>
+                                    <h5 class="card-title mb-4"><a href="/transection_hystry">Payment History</a></h5>
                                     <table class="table">
                                         <thead class="text-primary">
                                             <tr>
@@ -94,22 +98,24 @@
                                         </thead>
 
                                         <tbody>
-
+                                          @if(count($trans_hys)>0)
+                                            @foreach($trans_hys->all() as $trans_hys)
                                             <tr>
-                                                <td>{{$trans_hys -> order_id}}</td>
-                                                <td>{{$trans_hys -> amount}}</td>
+                                                <td>{{$trans_hys->name}}</td>
+                                                <td>{{$trans_hys->amount}}</td>
 
-                                                <?php if ($trans_hys -> order_id=="Success"): ?>
-                                                    <td><span class="badge badge-success">Success</span></td>
+                                                <?php if ($trans_hys ->status=="successful"): ?>
+                                                    <td><span class="badge badge-success">Successful</span></td>
                                                 <?php else: ?>
                                                   <td><span class="badge badge-primary">Processing</span></td>
                                                 <?php endif; ?>
-                                                <?php if ($trans_hys -> order_id=="Failed"): ?>
+                                                <?php if ($trans_hys ->status=="Failed"): ?>
                                                   <td><span class="badge badge-danger">Failed</span></td>
                                                 <?php endif; ?>
 
                                             </tr>
-
+                                              @endforeach
+                                            @endif
                                         </tbody>
 
                                     </table>
@@ -122,28 +128,67 @@
                     </div>
 
 
+                                    <?php if (Auth::user()->status=="seller"): ?>
+                                      <div class="row mb-2">
+                                            <div class="col-lg-12">
+                                                <div class="card mb-4">
+                                                    <div class="card-block">
+                                                        <h5 class="card-title mb-5"><a href="/sells">Sells</a></h5>
+                                                        <table class="table">
+                                                            <thead class="text-primary">
+                                                                <tr>
+                                                                    <th>Order ID</th>
+                                                                    <th>Amount</th>
+                                                                    <th>Status</th>
+                                                                    <th colspan="3" class="text-center">Actions Buttons</th>
+                                                                </tr>
+                                                            </thead>
 
+                                                            <tbody>
+                                                              @if(count($sells)>0)
+                                                                @foreach($sells->all() as $sells)
+                                                                <tr>
+                                                                    <td>{{$sells->order_id}}</td>
+                                                                    <td>{{$sells->Amount}}</td>
 
+                                                                    <?php if ($sells->status=="successful"): ?>
+                                                                        <td><span class="badge badge-success">Successful</span></td>
+                                                                    <?php else: ?>
+                                                                      <td><span class="badge badge-primary">Processing</span></td>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($sells ->status=="Failed"): ?>
+                                                                      <td><span class="badge badge-danger">Failed</span></td>
+                                                                    <?php endif; ?>
 
+                                                                    <td><a href="/sales_preview?edit" class="btn btn-warning btn-sm">Preview Oder</a></td>
+                                                                    <td><a href="/reject_order" class="btn btn-danger btn-sm">Reject Oder</a></td>
+                                                                    <td><a href="/complite_order" class="btn btn-success btn-sm">Complite Oder</a></td>
 
+                                                                </tr>
+                                                                  @endforeach
+                                                                @endif
+                                                            </tbody>
 
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                    <?php if (Auth::user()->status=="seller"): ?>
 
                       <div class="row">
 
                         <div class="col-lg-8  mb-4">
                           <div class="card">
                           <div class="card-block">
-                              <h5 class="card-title mb-4">My Gigs</h5>
+                              <h5 class="card-title mb-4"><a href="/gits">My Gigs</a></h5>
                               <table class="table">
                                   <thead class="text-primary">
                                       <tr>
                                           <th>Name</th>
                                           <th>Discription</th>
-                                          <th>Amount ₦</th>
-                                          <th><span class="badge badge-warning">Edite Post</span></th>
-                                          <th><span class="badge badge-danger">Delite Post</span></th>
+                                          <th>Amount</th>
+                                          <th colspan="2" class="text-center">Actions Buttons</th>
                                       </tr>
                                   </thead>
                                   <tbody>
@@ -422,11 +467,6 @@
                                       </li>
 
 
-
-
-
-
-
                             <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
                                 <!-- <i class="fa fa-address-book"></i> -->
@@ -458,20 +498,16 @@
                             </div>
                         </li>
 
+                        <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> post your product</button>
 
+                        </form>
 
+                      </div>
 
-                                              <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> post your product</button>
+                    </div>
+                  </div>
 
-                                        </form>
-
-                                      </div>
-
-                                    </div>
-                                  </div>
-
-
-                          </div>
-                    <?php endif; ?>
+                </div>
+              <?php endif; ?>
 
                 </div>

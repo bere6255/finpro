@@ -25,7 +25,9 @@
             <input type="hidden" name="orderID" value="{{$trans[1]}}">
             <input type="hidden" name="amount" value="{{$trans[2]}}"> {{-- required in kobo --}}
             <input type="hidden" name="quantity" value="{{$trans[3]}}">
-            <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
+            <input type="hidden" name="order_table_id" value="{{$trans[4]}}">
+            <input type="hidden" name="seller_id" value="{{$trans[5]}}">
+            <input type="hidden" name="metadata" value="{{ json_encode($array = ['order_table_id' => '<?php echo $trans[4];?>', 'seller_id' => '<?php echo $trans[5];?>',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
             <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}
             {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}

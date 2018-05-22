@@ -1,5 +1,4 @@
 <div class="content-wrapper">
-
   <div class="row">
 
   @if(count($producting_main)>0)

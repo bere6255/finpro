@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountHystoriesTable extends Migration
+class CreateSellsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateAccountHystoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_hystories', function (Blueprint $table) {
+        Schema::create('sells', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id');
-            $table->integer('name');
-            $table->integer('status');
-            $table->string('amount');
+            $table->string('users_id');
+            $table->string('bayers_id');
+            $table->integer('Amount');
+            $table->string('status');
+            $table->string('order_id');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateAccountHystoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account_hystories');
+        Schema::dropIfExists('sells');
     }
 }

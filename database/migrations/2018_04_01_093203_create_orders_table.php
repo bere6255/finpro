@@ -22,6 +22,11 @@ class CreateOrdersTable extends Migration
             $table->integer('amount');
             $table->string('status');
             $table->string('order_id');
+            $table->integer('add_1');
+            $table->integer('add_2');
+            $table->integer('add_3');
+            $table->integer('add_4');
+            $table->integer('add_5');
             $table->timestamps();
 
         });

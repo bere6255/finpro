@@ -3,7 +3,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Web Services</title>
+    <title>DARA WORKS - an online heiring place for all class of artisanc renging from engineers,technichians,writers,programmers ICT expart ect</title>
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
     <link rel="stylesheet" href="css/style.css"/>
@@ -36,7 +36,7 @@
               <!-- plane setion start -->
               @yield('product')
             </div>
-
+          </div>
             <!-- footer start-->
               @yield('footer')
 
