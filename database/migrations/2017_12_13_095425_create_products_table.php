@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('cat');
             $table->integer('sub_cat');
             $table->string('add_on');
-
+            $table->timestamp('delivery_date');
             $table->timestamps();
         });
     }

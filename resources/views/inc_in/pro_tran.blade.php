@@ -54,6 +54,7 @@
                                                 <th>Order ID</th>
                                                 <th>Amount</th>
                                                 <th>Status</th>
+                                                <th colspan="2" class="text-center">Actions Buttons</th>
                                             </tr>
                                         </thead>
 
@@ -62,7 +63,7 @@
                                             @foreach($oder_hys->all() as $oder_hys)
                                             <tr>
                                                 <td>{{$oder_hys -> order_id}}</td>
-                                                <td>{{$oder_hys -> amount}}</td>
+                                                <td>₦ {{$oder_hys -> amount}}</td>
 
                                                 <?php if ($oder_hys -> status=="successful"): ?>
                                                     <td><span class="badge badge-success">Successful</span></td>
@@ -72,7 +73,8 @@
                                                 <?php if ($oder_hys -> status=="Failed"): ?>
                                                   <td><span class="badge badge-danger">Failed</span></td>
                                                 <?php endif; ?>
-
+                                                <td><a href="/sales_preview?order={{$oder_hys->order_id}}" class="btn btn-warning btn-sm">Preview</a></td>
+                                                <td><a href="/complite_order" class="btn btn-success btn-sm">Complited</a></td>
                                             </tr>
                                             @endforeach
                                             @endif
@@ -94,6 +96,7 @@
                                                 <th>Order ID</th>
                                                 <th>Amount</th>
                                                 <th>Status</th>
+
                                             </tr>
                                         </thead>
 
@@ -102,7 +105,7 @@
                                             @foreach($trans_hys->all() as $trans_hys)
                                             <tr>
                                                 <td>{{$trans_hys->name}}</td>
-                                                <td>{{$trans_hys->amount}}</td>
+                                                <td>₦ {{$trans_hys->amount}}</td>
 
                                                 <?php if ($trans_hys ->status=="successful"): ?>
                                                     <td><span class="badge badge-success">Successful</span></td>
@@ -149,7 +152,7 @@
                                                                 @foreach($sells->all() as $sells)
                                                                 <tr>
                                                                     <td>{{$sells->order_id}}</td>
-                                                                    <td>{{$sells->Amount}}</td>
+                                                                    <td>₦ {{$sells->Amount}}</td>
 
                                                                     <?php if ($sells->status=="successful"): ?>
                                                                         <td><span class="badge badge-success">Successful</span></td>
@@ -160,9 +163,9 @@
                                                                       <td><span class="badge badge-danger">Failed</span></td>
                                                                     <?php endif; ?>
 
-                                                                    <td><a href="/sales_preview?edit" class="btn btn-warning btn-sm">Preview Oder</a></td>
-                                                                    <td><a href="/reject_order" class="btn btn-danger btn-sm">Reject Oder</a></td>
-                                                                    <td><a href="/complite_order" class="btn btn-success btn-sm">Complite Oder</a></td>
+                                                                    <td><a href="/sales_preview?order={{$sells->order_id}}" class="btn btn-warning btn-sm">Preview</a></td>
+                                                                    <td><a href="/reject_order" class="btn btn-danger btn-sm">Reject</a></td>
+                                                                    <td><a href="/complite_order" class="btn btn-success btn-sm">Complited</a></td>
 
                                                                 </tr>
                                                                   @endforeach

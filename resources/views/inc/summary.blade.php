@@ -84,19 +84,19 @@
                            </div>
 
                            @if(count($add1)>0)
-                             <input type="hidden" name="add1" value="1">
+                             <input type="hidden" id="add1" name="add1" value="1">
                              @endif
                            @if(count($add2)>0)
-                             <input type="hidden" name="add2" value="2">
+                             <input type="hidden" id="add2" name="add2" value="2">
                              @endif
                            @if(count($add3)>0)
-                             <input type="hidden" name="add3" value="3">
+                             <input type="hidden" id="add3" name="add3" value="3">
                              @endif
                            @if(count($add4)>0)
-                             <input type="hidden" name="add4" value="4">
+                             <input type="hidden" id="add4" name="add4" value="4">
                              @endif
                            @if(count($add5)>0)
-                             <input type="hidden" name="add5" value="5">
+                             <input type="hidden" id="add5" name="add5" value="5">
                              @endif
 
                           <input type="hidden" name="product_id" value="{{$product->id}}">

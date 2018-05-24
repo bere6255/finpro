@@ -59,6 +59,31 @@ class HomeController extends Controller
 
 
     }
+     public function view_sells(Request $request){
+       $order_id = $request->get('order');
+       $order = DB::table('orders')->where('order_id', '=', $order_id)->get();
+       $buyer = DB::table('users')->where('id', '=', $order[0]->bayers_id)->get();
+       $product = DB::table('products')->where('id', '=', $order[0]->product_id)->get();
+       $product_add= DB::table('add__ons')->where('product_key', '=', $product[0]->add_on)->get();
+       $add_1= array();$add_2= array();$add_3= array();$add_4= array();$add_5= array();
+
+       if ($order[0]->add_1>0) {
+         $add_1=$product_add[0];
+       }
+       if ($order[0]->add_2>0) {
+         $add_2=$product_add[1];
+       }
+       if ($order[0]->add_3>0) {
+         $add_3=$product_add[2];
+       }
+       if ($order[0]->add_4>0) {
+         $add_4=$product_add[3];
+       }
+       if ($order[0]->add_5>0) {
+         $add_5=$product_add[4];
+       }
+       return view('order_details',['buyer_details'=>$buyer, 'product'=>$product, 'add_1'=>$add_1, 'add_2'=>$add_2, 'add_3'=>$add_3, 'add_4'=>$add_4,'add_5'=>$add_5]);
+     }
 
     public function loadprofile(){
     if (auth::guest()) {

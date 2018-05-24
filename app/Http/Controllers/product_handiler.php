@@ -39,33 +39,30 @@ class product_handiler extends Controller
       $product_id =$request->get('product_id');
       $seller_id = $request->get('product_seller');
       $total = $request->get('total');
-      $add_1 = $request->get('add1');
-      $add_2 = $request->get('add2');
-      $add_3 = $request->get('add3');
-      $add_4 = $request->get('add4');
-      $add_5 = $request->get('dd5');
-      if (empty($request->get('add_1'))) {
+      $add_1 = $request->input('add1');
+      $add_2 = $request->input('add2');
+      $add_3 = $request->input('add3');
+      $add_4 = $request->input('add4');
+      $add_5 = $request->input('add5');
+      if ($add_1!=1) {
         $add_1=0;
       }
-      if (empty($request->get('add_2'))) {
+      if ($add_2!=2) {
         $add_2=0;
       }
-      if (empty($request->get('add_3'))) {
+      if ($add_3!=3) {
         $add_3=0;
       }
-      if (empty($request->get('add_4'))) {
+      if ($add_4!=4) {
         $add_4=0;
       }
-      if (empty($request->get('add_5'))) {
+      if ($add_5!=5) {
         $add_5=0;
       }
       if (Auth::guest()) {
         // remember order write to session product_id
           return redirect('/login')->Cookie('product', $product_id, 3);
       }
-      //////////////////////////////////////////
-      /////////////////////////////////////////
-      /////////////////////////////////////////``
 
       if (Auth::user()->activation=="activated") {
               $bayer= Auth::user();
@@ -108,11 +105,11 @@ class product_handiler extends Controller
         // remember order write to session product_id
           return redirect('/login')->Cookie('product', $product_id, 10);
       }
-      $add_1 = $request->get('serv_add1');
-      $add_2 = $request->get('serv_add2');
-      $add_3 = $request->get('serv_add3');
-      $add_4 = $request->get('serv_add4');
-      $add_5 = $request->get('serv_add5');
+      $add_1 = $request->input('serv_add1');
+      $add_2 = $request->input('serv_add2');
+      $add_3 = $request->input('serv_add3');
+      $add_4 = $request->input('serv_add4');
+      $add_5 = $request->input('serv_add5');
       $getproduct = DB::table('products')->where('id', '=', $product_id)->get();
       $final_sum=$getproduct[0]->amount;
       if (!empty($getproduct{0}->id)) {
@@ -153,18 +150,6 @@ class product_handiler extends Controller
       }
 return back();
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function comment_post(Request $request){

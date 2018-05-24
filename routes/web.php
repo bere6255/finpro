@@ -34,6 +34,7 @@ Route::get('/postsubcat', 'cat_control@post_subcat');
 Route::get('/postsub', 'cat_control@postsub');
 Route::get('/catigory', 'cat_control@catigory');
 Route::get('/main', 'HomeController@loadcontent');
+Route::get('/sales_preview', 'HomeController@view_sells');
 Route::get('/order_hystry', 'HomeController@order_hys');
 Route::get('/transection_hystry', 'HomeController@transact_hys');
 Route::get('/gits', 'HomeController@gits');
@@ -46,7 +47,7 @@ Route::post('/order','product_handiler@order_product');
 Route::get('/comment_com','product_handiler@comment_post');
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::post('/chieckout', 'product_handiler@order_sum')->name('sum');
-/*
+
 Route::group(['prefix' => 'admin'], function () {
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'AdminAuth\LoginController@login');
@@ -65,4 +66,3 @@ Route::group(['prefix' => 'baod'], function () {
   Route::get('/password/reset', 'BaodAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'BaodAuth\ResetPasswordController@showResetForm');
 });
-*?
